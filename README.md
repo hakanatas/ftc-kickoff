@@ -31,7 +31,7 @@ sayfayla aynı paletten SVG olarak üretilir.
 
 ## Sunum modu
 
-Başlıktaki **Sunum modu** düğmesi ya da **P** tuşu sayfayı 22 slaytlık bir
+Başlıktaki **Sunum modu** düğmesi ya da **P** tuşu sayfayı 26 slaytlık bir
 sunuma çevirir.
 
 | Tuş | İş |

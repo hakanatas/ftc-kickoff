@@ -1,5 +1,7 @@
-import { LAYERS, RESOURCES, PATHS, AWARDS, KICKOFF } from './data.js';
+import { LAYERS, RESOURCES, PATHS, KICKOFF, KICKOFF_WEEK, CHANGES } from './data.js';
 import { iconImg } from './icon.js';
+import { renderAwards } from './awards.js';
+import { pollenField } from './pollen.js';
 import { SLIDES } from './slides.js';
 import { ART } from './art.js';
 
@@ -19,6 +21,8 @@ export function createDeck({ root, onOpen, onClose }) {
   let i = 0;
   let notesOn = false;
   const homes = new Map(); // taşınan düğümlerin asıl yeri
+  let cleanups = []; // slayttan çıkarken durdurulacak şeyler (animasyon döngüsü vb.)
+  const onLeave = (fn) => cleanups.push(fn);
 
   root.innerHTML = `
     <div class="deck__stage" id="deck-stage"></div>
@@ -213,10 +217,7 @@ export function createDeck({ root, onOpen, onClose }) {
       const b = el('div');
       b.appendChild(head(s));
       const g = el('div', 'slide__awards');
-      for (const a of AWARDS) {
-        const n = el('div', `saward${a.big ? ' saward--big' : ''}`, `<p class="saward__role">${a.role}</p><h3>${a.name}</h3><p class="saward__desc">${a.desc}</p>`);
-        g.appendChild(n);
-      }
+      g.appendChild(renderAwards());
       b.appendChild(g);
       const f = foot(s);
       if (f) b.appendChild(f);
@@ -242,6 +243,128 @@ export function createDeck({ root, onOpen, onClose }) {
         if (r) g.appendChild(resourceCard(r));
       }
       b.appendChild(g);
+      const f = foot(s);
+      if (f) b.appendChild(f);
+      return b;
+    },
+    /** Kickoff haftası: bugüne göre canlı hesaplanan takvim. */
+    dates(s) {
+      const b = el('div');
+      b.appendChild(head(s));
+      const AY = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'];
+      const GUN = ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'];
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const parse = (iso) => {
+        const [y, m, d] = iso.split('-').map(Number);
+        return new Date(y, m - 1, d);
+      };
+      const diff = (d) => Math.round((d - today) / 86400000);
+      const rel = (n) => (n === 0 ? 'bugün' : n === 1 ? 'yarın' : n === -1 ? 'dün' : n > 0 ? `${n} gün sonra` : `${-n} gün önce`);
+      const kick = parse('2026-09-12');
+      const dk = diff(kick);
+      const wrap = el('div', 'dates');
+      const hero = el('div', 'dates__hero fact');
+      hero.innerHTML = dk === 0
+        ? '<b>Bugün</b><span>Kickoff günü. Yayın 19.00, tam manual yayından sonra.</span>'
+        : dk > 0
+          ? `<b>${dk} gün</b><span>Kickoff'a kalan süre · 12 Eylül, 19.00</span>`
+          : `<b>${-dk} gün</b><span>Kickoff'tan bu yana · manual yayında</span>`;
+      wrap.appendChild(hero);
+      const list = el('ol', 'dates__list');
+      for (const it of KICKOFF_WEEK) {
+        const d = parse(it.date);
+        const n = diff(d);
+        const st = n < 0 ? 'past' : n === 0 ? 'today' : 'future';
+        const li = el('li', `dline dline--${st}`);
+        li.innerHTML = `
+          <span class="dline__when"><b>${d.getDate()} ${AY[d.getMonth()]}</b><small>${it.span || GUN[d.getDay()]}${it.time ? ` · ${it.time}` : ''}</small></span>
+          <span class="dline__dot" aria-hidden="true"></span>
+          <span class="dline__body"><b>${it.title}</b><span>${it.line}</span></span>
+          <span class="dline__rel">${rel(n)}</span>`;
+        list.appendChild(li);
+      }
+      wrap.appendChild(list);
+      b.appendChild(wrap);
+      const f = foot(s);
+      if (f) b.appendChild(f);
+      return b;
+    },
+    /** Önce / şimdi: çevrilebilir değişiklik kartları. */
+    changes(s) {
+      const b = el('div');
+      b.appendChild(head(s));
+      const wrap = el('div', 'chg');
+      const tog = el('div', 'chg__toggle');
+      tog.setAttribute('role', 'group');
+      tog.setAttribute('aria-label', 'Sezon seç');
+      tog.innerHTML = `
+        <button type="button" data-side="before" aria-pressed="true">DECODE <small>2025–26</small></button>
+        <button type="button" data-side="after" aria-pressed="false">BIOBUZZ <small>2026–27</small></button>
+        <span class="chg__tip">Karta tıklayın ya da sezonu değiştirin</span>`;
+      wrap.appendChild(tog);
+      const grid = el('div', `chg__grid chg__grid--${s.items.length}`);
+      const cards = [];
+      s.items.forEach((key, k) => {
+        const c = CHANGES[key];
+        const card = el('button', 'chg__card');
+        card.type = 'button';
+        card.style.setProperty('--i', k);
+        card.setAttribute('aria-pressed', 'false');
+        card.innerHTML = `
+          <span class="chg__inner">
+            <span class="chg__face chg__face--before">
+              <span class="chg__tag">${c.tag} · önce</span>
+              <span class="chg__title">${c.title}</span>
+              <span class="chg__text">${c.before}</span>
+              <span class="chg__who">${c.who}</span>
+            </span>
+            <span class="chg__face chg__face--after">
+              <span class="chg__tag">${c.tag} · şimdi</span>
+              <span class="chg__title">${c.title}</span>
+              <span class="chg__text">${c.after}</span>
+              ${c.note ? `<span class="chg__note">${c.note}</span>` : ''}
+              <span class="chg__who">${c.who}</span>
+            </span>
+          </span>`;
+        card.addEventListener('click', () => {
+          const on = !card.classList.contains('is-after');
+          card.classList.toggle('is-after', on);
+          card.setAttribute('aria-pressed', String(on));
+          syncToggle();
+        });
+        cards.push(card);
+        grid.appendChild(card);
+      });
+      wrap.appendChild(grid);
+      const btns = tog.querySelectorAll('button');
+      function syncToggle() {
+        const n = cards.filter((c) => c.classList.contains('is-after')).length;
+        btns[0].setAttribute('aria-pressed', String(n === 0));
+        btns[1].setAttribute('aria-pressed', String(n === cards.length));
+      }
+      btns.forEach((bt) =>
+        bt.addEventListener('click', () => {
+          const after = bt.dataset.side === 'after';
+          cards.forEach((c) => {
+            c.classList.toggle('is-after', after);
+            c.setAttribute('aria-pressed', String(after));
+          });
+          syncToggle();
+        })
+      );
+      b.appendChild(wrap);
+      const f = foot(s);
+      if (f) b.appendChild(f);
+      return b;
+    },
+    /** Pollen sahası: canlı fizik oyuncağı. */
+    pollen(s) {
+      const b = el('div');
+      b.appendChild(head(s));
+      const sim = pollenField({ reduced });
+      b.appendChild(sim.el);
+      onLeave(() => sim.destroy());
       const f = foot(s);
       if (f) b.appendChild(f);
       return b;
@@ -287,6 +410,8 @@ export function createDeck({ root, onOpen, onClose }) {
   let refit = () => {};
   function draw() {
     const s = SLIDES[i];
+    for (const fn of cleanups) fn();
+    cleanups = [];
     stage.innerHTML = '';
     const wrap = el('div', 'slide__fit');
     const slide = el('article', `slide slide--${s.kind}${s.wide ? ' slide--wide' : ''}`);
@@ -362,6 +487,8 @@ export function createDeck({ root, onOpen, onClose }) {
     if (!open) return;
     open = false;
     giveBack();
+    for (const fn of cleanups) fn();
+    cleanups = [];
     stage.innerHTML = '';
     root.hidden = true;
     root.setAttribute('aria-hidden', 'true');
@@ -392,7 +519,7 @@ export function createDeck({ root, onOpen, onClose }) {
 
   // boş alana tıklayınca ilerle; düğme, link, kart ve form öğeleri hariç
   stage.addEventListener('click', (e) => {
-    if (e.target.closest('a, button, input, label, select, textarea, .card, .scard, .quiz, .tasks, .supply__box')) return;
+    if (e.target.closest('a, button, input, label, select, textarea, .card, .scard, .quiz, .tasks, .supply__box, .pollen, .chg, .awards')) return;
     const r = stage.getBoundingClientRect();
     go(e.clientX - r.left < r.width * 0.25 ? i - 1 : i + 1);
   });
@@ -405,6 +532,7 @@ export function createDeck({ root, onOpen, onClose }) {
     sy = e.clientY;
   });
   stage.addEventListener('pointerup', (e) => {
+    if (e.target.closest('.pollen, input')) return;
     const dx = e.clientX - sx;
     const dy = e.clientY - sy;
     if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.6) go(dx < 0 ? i + 1 : i - 1);

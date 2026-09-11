@@ -74,6 +74,30 @@ export const RESOURCES = [
     url: 'https://ftc-events.firstinspires.org',
   },
   {
+    name: 'BIOBUZZ Manual ön sürümü',
+    layer: 'resmi',
+    roles: ['kural', 'odul'],
+    kind: 'sezonluk',
+    desc: "Competition Manual'ın 29 Temmuz'da çıkan V0 sürümü ve değişiklik özeti: kuralın ruhu, evergreen kurallar, Initial Interview. Tam manual kickoff yayınından sonra.",
+    url: 'https://community.firstinspires.org/biobuzz-cm-preview-release',
+  },
+  {
+    name: 'Game Preview 2027',
+    layer: 'resmi',
+    roles: ['mekanik', 'yazilim'],
+    kind: 'sezonluk',
+    desc: "Pollen'in ölçüleri, dört üreticinin StarterBot'ları ve yedi Skill Builder mini oyunu. Oyun açıklanmadan önce intake denemeye başlamanın resmî yolu.",
+    url: 'https://community.firstinspires.org/game-preview-field-elements',
+  },
+  {
+    name: 'BIOBUZZ sezon tarihleri',
+    layer: 'resmi',
+    roles: ['kural'],
+    kind: 'sezonluk',
+    desc: 'Kickoff, SDK sürümü, Q&A açılışı, gönüllü eğitimi. Sezonun resmî takvimi tek sayfada.',
+    url: 'https://community.firstinspires.org/key-upcoming-biobuzz-season-dates',
+  },
+  {
     name: 'FTC Docs',
     layer: 'resmi',
     roles: ['yazilim', 'elektronik', 'cad'],
@@ -569,25 +593,117 @@ export const KICKOFF = [
   { big: '12 hafta', label: 'Aralık ilk haftasındaki ilk turnuvaya kalan süre' },
 ];
 
-/** Yazılımın üç yolu — slayt 9. */
+/** Yazılımın üç yolu — slayt 13. */
 export const PATHS = [
   { no: '1', name: 'Blocks', line: 'Görsel bloklar, tarayıcıdan, sıfır kurulum.', when: 'İlk hafta · ortaokul' },
   { no: '2', name: 'OnBot Java', line: 'Tarayıcıdan gerçek Java. Kurulum yok, kod var.', when: "Blocks'tan Java'ya köprü" },
   { no: '3', name: 'Android Studio', line: 'Tam IDE: sürüm kontrolü, harici kütüphaneler.', when: 'Ciddi sezon yazılımı' },
 ];
 
-/** Ödüller ve karşılık geldikleri roller — slayt 16-17. */
+/**
+ * Ödüller ve karşılık geldikleri roller — slayt 21 ve sayfadaki Roller bölümü.
+ * Yapı, BIOBUZZ Competition Manual ön sürümündeki ödül tablosuyla aynı:
+ * Inspire ve Think tek başına; Team Attribute (TA) ve Machine, Creativity &
+ * Innovation (MCI) grupları; Judges' Choice. Motivate, DECODE sezonundan
+ * itibaren Reach ve Sustain olarak ikiye ayrıldı.
+ */
+export const AWARD_GROUPS = {
+  ta: { name: 'Team Attribute Awards', short: 'TA', line: 'Takımın topluluğa dokunuşu' },
+  mci: { name: 'Machine, Creativity & Innovation Awards', short: 'MCI', line: 'Robotun kendisi' },
+};
+
 export const AWARDS = [
   { name: 'Inspire', role: 'Hepsi birden', desc: 'Programın bütününü en iyi yansıtan takım. Bir üst seviyeye ilerlemenin ana yolu.', big: true, roleKey: 'odul' },
   { name: 'Think', role: 'Portfolyo & defter', desc: 'Mühendislik süreci ve mühendislik defteri.', roleKey: 'odul' },
-  { name: 'Connect', role: 'Dış ilişkiler', desc: 'STEM topluluğu ve mentör ağı.', roleKey: 'odul' },
-  { name: 'Innovate', role: 'Tasarım / CAD', desc: 'Özgün tasarım çözümü.', roleKey: 'cad' },
-  { name: 'Control', role: 'Yazılım', desc: 'Sensör, yazılım, otonom.', roleKey: 'yazilim' },
-  { name: 'Motivate', role: 'Medya / tanıtım', desc: 'Takım kültürü ve coşku.', roleKey: 'odul' },
-  { name: 'Design', role: 'Tasarım / CAD', desc: 'Endüstriyel tasarım dili.', roleKey: 'cad' },
+  { name: 'Connect', group: 'ta', role: 'Dış ilişkiler', desc: 'STEM topluluğu ve mentör ağı.', roleKey: 'odul' },
+  { name: 'Reach', group: 'ta', role: 'Tanıtım', desc: "FIRST'e yeni insan kazandıran erişim çalışması.", roleKey: 'odul', isNew: true, was: 'Motivate' },
+  { name: 'Sustain', group: 'ta', role: 'Takım yönetimi', desc: 'Takımın uzun vadeli sürekliliği ve stratejik planı.', roleKey: 'odul', isNew: true, was: 'Motivate' },
+  { name: 'Design', group: 'mci', role: 'Tasarım / CAD', desc: 'Endüstriyel tasarım dili.', roleKey: 'cad' },
+  { name: 'Innovate', group: 'mci', role: 'Tasarım / CAD', desc: 'Özgün tasarım çözümü.', roleKey: 'cad' },
+  { name: 'Control', group: 'mci', role: 'Yazılım', desc: 'Sensör, yazılım, otonom.', roleKey: 'yazilim' },
+  { name: "Judges' Choice", role: 'Hepsi', desc: 'Başka kategoriye sığmayan ama jürinin görmezden gelemediği çaba.', roleKey: 'odul' },
 ];
 
-/** Bu haftanın görevleri — slayt 20. */
+/**
+ * Bu sezon ne değişti — slayt 8 ve 20. Kaynak: BIOBUZZ Competition Manual
+ * ön sürüm duyurusu (community.firstinspires.org/biobuzz-cm-preview-release).
+ * Ayrıntı için tam manual'ı kickoff sonrası kontrol edin.
+ */
+export const CHANGES = {
+  ruh: {
+    tag: 'Kural felsefesi',
+    title: 'Kuralın ruhu',
+    who: 'Herkes',
+    before: 'Manual her senaryoyu tek tek yazmaya çalışıyordu. Esneklik yoktu; tartışma, maddede boşluk aramaya dönüyordu.',
+    after: '"Niyet edilen oyun" esas. Kural ruhunu anlatıyor, hakem ve gönüllü iyi niyetli karar veriyor. Her olayı tek tek tutanağa geçirmek yerine büyük resme bakılıyor.',
+    note: 'FIRST bunun kalıcı bir yön olduğunu söylüyor: sonraki sezonlar da böyle yazılacak.',
+  },
+  evergreen: {
+    tag: 'Manual biçimi',
+    title: 'Evergreen kurallar',
+    who: 'Herkes',
+    before: 'Hangi kuralın her yıl aynı kaldığını ancak eski manual ile satır satır karşılaştırarak anlıyordunuz.',
+    after: 'Kalın yeşil ve başında * olan kurallar "evergreen": yıldan yıla aynı, yalnızca oyuna özel detay değişir. Bir kez öğrenin, dört yıl kullanın.',
+  },
+  robot: {
+    tag: 'Robot kuralları',
+    title: 'Daha az kural, aynı sınırlar',
+    who: 'Mekanik · elektronik',
+    before: 'Yapım önerileri ve iyi uygulamalar kural gibi yazılıydı; benzer maddeler bölümün içinde dağınıktı.',
+    after: 'Öneriler manual\'dan çıktı, eğitim kaynaklarına taşındı. Benzer kurallar birleştirildi, bölüm yeni Section 1\'e göre yeniden düzenlendi. Başlangıçta 18 inç küp aynen duruyor.',
+  },
+  inspection: {
+    tag: 'Inspection',
+    title: 'Prosedür kural değil, açıklama',
+    who: 'Mekanik',
+    before: 'Inspection\'ın nasıl yürütüleceği ayrı kural maddeleri olarak yazılıydı.',
+    after: 'Bu maddeler kaldırıldı; süreç artık açıklama metninde anlatılıyor. Kontrol listesi tam manual ile geliyor.',
+  },
+  interview: {
+    tag: 'Jüri',
+    title: 'Structured → Initial Interview',
+    who: 'Ödül & portfolyo',
+    before: 'Structured Interview: her etkinlikte aynı kalıpta ilk jüri görüşmesi.',
+    after: 'Adı Initial Interview oldu; bölgeye ve etkinliğe göre jüri deneyimi farklılaşabilir. Takım jüri ödülleri için Initial Interview\'a katılmak şart.',
+  },
+  portfolio: {
+    tag: 'Portfolyo',
+    title: 'Bazı ödüller portfolyo ister',
+    who: 'Ödül & portfolyo',
+    before: 'Engineering Portfolio jürinin ana belgesiydi; görüşmeyle birlikte değerlendirilirdi.',
+    after: 'Manual açıkça söylüyor: bazı ödüller için PORTFOLIO teslimi ön koşul. Hangi ödüller olduğu ödül tablosunda; portfolyo ekibi bunu ilk hafta işaretlesin.',
+  },
+  awards: {
+    tag: 'Ödüller · DECODE\'dan beri',
+    title: 'Motivate gitti, Reach ve Sustain geldi',
+    who: 'Ödül & portfolyo',
+    before: 'Tek bir Motivate Award: takım kültürü, coşku ve tanıtım bir arada.',
+    after: 'İkiye ayrıldı. Reach: FIRST\'e yeni insan kazandırma. Sustain: takımın uzun vadeli sürekliliği. Ödüller iki grupta: Team Attribute (Connect, Reach, Sustain) ve Machine, Creativity & Innovation (Design, Innovate, Control).',
+  },
+};
+
+/** Kickoff haftası ve sonrası — slayt 3. Tarihler resmî sezon takviminden. */
+export const KICKOFF_WEEK = [
+  { date: '2026-07-29', title: 'Competition Manual ön sürümü (V0)', line: 'Oyundan bağımsız bölümler yayınlandı; bu sunumdaki değişiklik slaytlarının kaynağı.' },
+  { date: '2026-09-12', time: '19.00', title: 'Kickoff yayını', line: 'Oyun tanıtımı; tam Competition Manual yayından hemen sonra çıkıyor. ABD saatiyle 12.00 ET.' },
+  { date: '2026-09-12', title: 'Scoring event configuration açılıyor', line: 'Turnuva skorlama sistemi sezona ayarlanıyor.' },
+  { date: '2026-09-12', span: 'Kickoff haftası', title: 'SDK sürümü ve FTC Live ön izleme (beta)', line: 'Yazılım ekibi yeni SDK ile başlar; geçen sezonun sürümüyle kod yazmayın.' },
+  { date: '2026-09-14', title: 'FIRST Leadership Award adaylıkları', line: 'Adaylık başvurusu açılıyor.' },
+  { date: '2026-09-17', title: 'Gönüllü eğitimi', line: 'Hakem ve jüri eğitimleri açılıyor; mentörler için.' },
+  { date: '2026-09-28', title: 'Team Q&A açılıyor', line: 'Kural sorularınızı yazabileceğiniz resmî sistem. Cevapları Manual kadar bağlayıcı.' },
+];
+
+/** Pollen ve saha ön izlemesi — slayt 9. Kaynak: Game Preview 2027. */
+export const POLLEN = {
+  diameterIn: 2.8,
+  diameterCm: 7.1,
+  weightLb: 0.055,
+  weightG: 25,
+  vendors: ['AndyMark', 'goBILDA', 'REV Robotics', 'Studica'],
+  skillBuilders: 7,
+};
+
+/** Bu haftanın görevleri — slayt 25. */
 export const TASKS = [
   { id: 't1', text: "Competition Manual'ın ilk bölümünü okuyun. Kuralları değil, yapıyı anlamak için.", hint: 'Competition Manual' },
   { id: 't2', text: 'gm0.org → Getting Started in FTC bölümünü baştan sona okuyun.', hint: 'Game Manual 0' },
@@ -596,7 +712,7 @@ export const TASKS = [
   { id: 't5', text: 'Bir Engineering Portfolio örneği açıp inceleyin ve hangi bölümde çalışmak istediğinize karar verin.', hint: 'Hivemind portfolyo arşivi' },
 ];
 
-/** Sipariş penceresi — slayt 12'deki uyarının sayısal hâli. */
+/** Sipariş penceresi — slayt 16'daki uyarının sayısal hâli. */
 export const SUPPLY = [
   { max: 2, verdict: 'Sadece elimizdeki parça', tone: 'bad', line: 'İki hafta kala yeni parça beklemek plan değil, umut. Elinizdeki stokla ve yerel hırdavatla çözün.' },
   { max: 4, verdict: 'Türkiye tedarikçisi', tone: 'warn', line: 'Yurt içi sipariş bu pencereye sığar. Yurt dışı sipariş gümrükte kalırsa turnuvaya yetişmez.' },

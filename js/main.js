@@ -1,4 +1,5 @@
-import { LAYERS, ROLES, RESOURCES, AWARDS, TASKS, SUPPLY, PATHS, KICKOFF } from './data.js';
+import { LAYERS, ROLES, RESOURCES, TASKS, SUPPLY, PATHS, KICKOFF } from './data.js';
+import { renderAwards } from './awards.js';
 import { iconImg } from './icon.js';
 import { createDeck } from './present.js';
 import { ART, windowX } from './art.js';
@@ -307,19 +308,9 @@ function atlas() {
 // ---------------------------------------------------------------------------
 function awards(api) {
   const host = $('#awards');
-  for (const a of AWARDS) {
-    const el = document.createElement('button');
-    el.type = 'button';
-    el.className = `award${a.big ? ' award--big' : ''}`;
-    el.style.textAlign = 'left';
-    el.style.cursor = 'pointer';
-    el.innerHTML = `
-      <p class="award__role">${a.role}</p>
-      <h3 class="award__name">${a.name}</h3>
-      <p class="award__desc">${a.desc}</p>`;
-    el.addEventListener('click', () => api.focusRole(a.roleKey));
-    host.appendChild(el);
-  }
+  const n = renderAwards({ onPick: (a) => api.focusRole(a.roleKey) });
+  n.id = 'awards';
+  host.replaceWith(n);
 }
 
 // ---------------------------------------------------------------------------

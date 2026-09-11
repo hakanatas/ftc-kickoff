@@ -111,7 +111,7 @@ export const SLIDES = [
   },
   {
     kind: 'cards',
-    names: ['FTCSim', 'FTCLib / SolversLib', 'Road Runner', 'Pedro Pathing', 'NextFTC', 'VisionPortal · EasyOpenCV', 'FTC Dashboard · Panels'],
+    names: ['FTCSim', 'FTCLib / SolversLib', 'Road Runner', 'Pedro Pathing', 'NextFTC', 'FTC Dashboard · Panels'],
     kicker: 'Yazılım',
     title: 'Araç ve kütüphane haritası',
     lede: 'İlki bugün kullanılır: FTCSim. Gerisini bugün kullanmayacaksınız, ama adını duyduğunuzda ne olduğunu bilin.',

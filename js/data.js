@@ -263,7 +263,7 @@ export const RESOURCES = [
     roles: ['yazilim'],
     kind: 'kalici',
     desc: "Komut tabanlı yapı ve donanım soyutlamaları. SolversLib, FTCLib'in aktif bakılan devamı: kütüphaneler yaşar ve ölür, seçmeden önce bakımına bakın.",
-    url: '',
+    url: 'https://docs.seattlesolvers.com',
   },
   {
     name: 'Road Runner',
@@ -271,7 +271,7 @@ export const RESOURCES = [
     roles: ['yazilim'],
     kind: 'kalici',
     desc: 'Otonom yol takibi. Matematiksel olarak sağlam, kurulumu emek ister.',
-    url: '',
+    url: 'https://rr.brott.dev',
   },
   {
     name: 'Pedro Pathing',
@@ -279,7 +279,7 @@ export const RESOURCES = [
     roles: ['yazilim'],
     kind: 'kalici',
     desc: 'Yol takibinde daha kolay ayarlanan, hızla yaygınlaşan alternatif.',
-    url: '',
+    url: 'https://pedropathing.com',
   },
   {
     name: 'NextFTC',
@@ -287,7 +287,7 @@ export const RESOURCES = [
     roles: ['yazilim'],
     kind: 'kalici',
     desc: 'Modern komut/OpMode çatısı. Pedro Pathing eklentisiyle geliyor.',
-    url: '',
+    url: 'https://nextftc.dev',
   },
   {
     name: 'VisionPortal · EasyOpenCV',
@@ -302,8 +302,8 @@ export const RESOURCES = [
     layer: 'dokuman',
     roles: ['yazilim'],
     kind: 'kalici',
-    desc: 'Canlı telemetri ve ayar arayüzü. Hata ayıklamanın bel kemiği.',
-    url: '',
+    desc: 'Canlı telemetri ve ayar arayüzü. Hata ayıklamanın bel kemiği. Panels (panels.bylazar.com) aynı işi yapan yeni alternatif.',
+    url: 'https://acmerobotics.github.io/ftc-dashboard',
   },
   {
     name: 'ReCalc · EveryCalc',

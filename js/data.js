@@ -201,6 +201,7 @@ export const RESOURCES = [
   {
     name: 'FTCSim',
     layer: 'dokuman',
+    icon: 'ftcsim',
     roles: ['yazilim'],
     kind: 'kalici',
     star: true,

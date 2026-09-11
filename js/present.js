@@ -112,12 +112,12 @@ export function createDeck({ root, onOpen, onClose }) {
     }
     const host = r.url ? r.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'adres bekliyor';
     n.innerHTML = `
-      <span class="scard__layer">${l.short}</span>
+      <div class="scard__top"><span class="scard__layer">${l.short}</span></div>
       <h3 class="scard__name">${r.name}</h3>
       <p class="scard__desc">${r.desc}</p>
       <span class="scard__url${r.url ? '' : ' is-soon'}">${host}</span>`;
     const ic = iconImg(r, 'scard__icon');
-    if (ic) n.querySelector('.scard__name').prepend(ic);
+    if (ic) n.querySelector('.scard__top').appendChild(ic);
     return n;
   }
 

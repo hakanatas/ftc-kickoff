@@ -13,9 +13,12 @@ Uzantı `.svg`, `.png` ya da `.webp` olabilir; önce `.svg` denenir.
 | `grabcad.svg` | 10650 Hazmat · GrabCAD arşivi |
 | `servocity.svg` | ServoCity CAD dosyaları |
 | `blender.svg` | Blender4FTC · Fusion render rehberleri |
+| `ftcsim.svg` | FTCSim |
 
-Simge beyaz, yuvarlatılmış küçük bir kutuda gösterilir; şeffaf ya da beyaz
-zeminli kare logolar en iyi sonucu verir. Öneri: SVG ya da 128 piksel PNG.
+Logo kartın üst satırında, katman etiketinin karşısında beyaz yuvarlatılmış bir
+kutuda gösterilir; yatay yazı logoları da kare simgeler de olur. Şeffaf ya da
+beyaz zemin en iyi sonucu verir. Öneri: SVG ya da en az 400 piksel genişlikte
+PNG. AVIF tarayıcı desteği için PNG'ye çevrilmeli.
 
 Başka bir karta simge eklemek için `js/data.js` içindeki kayda
 `icon: 'dosyaadi'` alanı ekleyin ve dosyayı buraya koyun.

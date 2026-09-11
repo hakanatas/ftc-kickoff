@@ -255,7 +255,7 @@ function atlas() {
           ${r.url ? `<span class="card__url">${host}</span><span class="card__go">↗</span>` : '<span class="card__soon">adres bekliyor</span>'}
         </div>`;
       const ic = iconImg(r, 'card__icon');
-      if (ic) el.querySelector('.card__name').prepend(ic);
+      if (ic) el.querySelector('.card__top').appendChild(ic);
       cardsEl.appendChild(el);
     }
     countEl.textContent = `${list.length} / ${RESOURCES.length}`;

@@ -48,13 +48,6 @@ export const SLIDES = [
     note: 'Bu slayt sunumun omurgası. Sonraki her slaydı bir katmana yerleştireceğiz.',
   },
   {
-    kind: 'adopt',
-    target: '.quiz',
-    kicker: 'Kural gücü',
-    title: 'Tartışmayı hangisi bitirir?',
-    note: 'Salona sorun, cevabı aldıktan sonra tıklayın. “gm0’da böyle yazıyor” geçerli bir argüman değildir; “Manual’ın şu maddesi” geçerlidir.',
-  },
-  {
     kind: 'cards',
     names: ['Competition Manual', 'FTC Q&A', 'FTC Events'],
     photo: { file: 'saha', alt: 'Turnuva sahası' },

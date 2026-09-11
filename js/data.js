@@ -593,7 +593,7 @@ export const KICKOFF = [
   { big: '12 hafta', label: 'Aralık ilk haftasındaki ilk turnuvaya kalan süre' },
 ];
 
-/** Yazılımın üç yolu — slayt 13. */
+/** Yazılımın üç yolu — slayt 12. */
 export const PATHS = [
   { no: '1', name: 'Blocks', line: 'Görsel bloklar, tarayıcıdan, sıfır kurulum.', when: 'İlk hafta · ortaokul' },
   { no: '2', name: 'OnBot Java', line: 'Tarayıcıdan gerçek Java. Kurulum yok, kod var.', when: "Blocks'tan Java'ya köprü" },
@@ -601,7 +601,7 @@ export const PATHS = [
 ];
 
 /**
- * Ödüller ve karşılık geldikleri roller — slayt 21 ve sayfadaki Roller bölümü.
+ * Ödüller ve karşılık geldikleri roller — slayt 20 ve sayfadaki Roller bölümü.
  * Yapı, BIOBUZZ Competition Manual ön sürümündeki ödül tablosuyla aynı:
  * Inspire ve Think tek başına; Team Attribute (TA) ve Machine, Creativity &
  * Innovation (MCI) grupları; Judges' Choice. Motivate, DECODE sezonundan
@@ -625,7 +625,7 @@ export const AWARDS = [
 ];
 
 /**
- * Bu sezon ne değişti — slayt 8 ve 20. Kaynak: BIOBUZZ Competition Manual
+ * Bu sezon ne değişti — slayt 7 ve 19. Kaynak: BIOBUZZ Competition Manual
  * ön sürüm duyurusu (community.firstinspires.org/biobuzz-cm-preview-release).
  * Ayrıntı için tam manual'ı kickoff sonrası kontrol edin.
  */
@@ -693,7 +693,7 @@ export const KICKOFF_WEEK = [
   { date: '2026-09-28', title: 'Team Q&A açılıyor', line: 'Kural sorularınızı yazabileceğiniz resmî sistem. Cevapları Manual kadar bağlayıcı.' },
 ];
 
-/** Pollen ve saha ön izlemesi — slayt 9. Kaynak: Game Preview 2027. */
+/** Pollen ve saha ön izlemesi — slayt 8. Kaynak: Game Preview 2027. */
 export const POLLEN = {
   diameterIn: 2.8,
   diameterCm: 7.1,
@@ -703,7 +703,7 @@ export const POLLEN = {
   skillBuilders: 7,
 };
 
-/** Bu haftanın görevleri — slayt 25. */
+/** Bu haftanın görevleri — slayt 24. */
 export const TASKS = [
   { id: 't1', text: "Competition Manual'ın ilk bölümünü okuyun. Kuralları değil, yapıyı anlamak için.", hint: 'Competition Manual' },
   { id: 't2', text: 'gm0.org → Getting Started in FTC bölümünü baştan sona okuyun.', hint: 'Game Manual 0' },
@@ -712,7 +712,7 @@ export const TASKS = [
   { id: 't5', text: 'Bir Engineering Portfolio örneği açıp inceleyin ve hangi bölümde çalışmak istediğinize karar verin.', hint: 'Hivemind portfolyo arşivi' },
 ];
 
-/** Sipariş penceresi — slayt 16'daki uyarının sayısal hâli. */
+/** Sipariş penceresi — slayt 15'teki uyarının sayısal hâli. */
 export const SUPPLY = [
   { max: 2, verdict: 'Sadece elimizdeki parça', tone: 'bad', line: 'İki hafta kala yeni parça beklemek plan değil, umut. Elinizdeki stokla ve yerel hırdavatla çözün.' },
   { max: 4, verdict: 'Türkiye tedarikçisi', tone: 'warn', line: 'Yurt içi sipariş bu pencereye sığar. Yurt dışı sipariş gümrükte kalırsa turnuvaya yetişmez.' },

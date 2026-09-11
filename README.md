@@ -31,7 +31,7 @@ sayfayla aynı paletten SVG olarak üretilir.
 
 ## Sunum modu
 
-Başlıktaki **Sunum modu** düğmesi ya da **P** tuşu sayfayı 26 slaytlık bir
+Başlıktaki **Sunum modu** düğmesi ya da **P** tuşu sayfayı 25 slaytlık bir
 sunuma çevirir.
 
 | Tuş | İş |
@@ -49,7 +49,7 @@ Telefonda parmakla kaydırma, masaüstünde boş alana tıklama da slayt geçer.
 `?sunum=1` sunumu doğrudan açar, `?slayt=12` on ikinci slayttan başlatır.
 Projeksiyon bilgisayarına yer imi olarak koymak için uygun.
 
-Sunumdaki atlas, katman testi, sipariş kaydırıcısı ve görev listesi kopya
+Sunumdaki atlas, sipariş kaydırıcısı ve görev listesi kopya
 değil: sayfanın asıl parçaları slayda taşınır, çıkışta yerine döner. Yani
 sunum sırasında canlı arama yapabilirsiniz.
 

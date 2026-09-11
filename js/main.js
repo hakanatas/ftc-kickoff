@@ -1,4 +1,5 @@
 import { LAYERS, ROLES, RESOURCES, AWARDS, TASKS, SUPPLY, PATHS, KICKOFF } from './data.js';
+import { iconImg } from './icon.js';
 import { createDeck } from './present.js';
 import { ART, windowX } from './art.js';
 
@@ -253,6 +254,8 @@ function atlas() {
         <div class="card__foot">
           ${r.url ? `<span class="card__url">${host}</span><span class="card__go">↗</span>` : '<span class="card__soon">adres bekliyor</span>'}
         </div>`;
+      const ic = iconImg(r, 'card__icon');
+      if (ic) el.querySelector('.card__name').prepend(ic);
       cardsEl.appendChild(el);
     }
     countEl.textContent = `${list.length} / ${RESOURCES.length}`;

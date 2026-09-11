@@ -315,6 +315,7 @@ export const RESOURCES = [
   {
     name: '2901 Purple Gears · Onshape kütüphanesi',
     layer: 'dokuman',
+    icon: 'onshape',
     roles: ['cad'],
     kind: 'kalici',
     desc: 'Hazır FTC parça kütüphanesi. Vidayı sıfırdan çizmek yerine sürükleyip montaja geçiyorsunuz.',
@@ -323,6 +324,7 @@ export const RESOURCES = [
   {
     name: '10650 Hazmat · GrabCAD arşivi',
     layer: 'dokuman',
+    icon: 'grabcad',
     roles: ['cad'],
     kind: 'kalici',
     desc: 'Takım tarafından paylaşılan geniş parça arşivi.',
@@ -331,6 +333,7 @@ export const RESOURCES = [
   {
     name: 'ServoCity CAD dosyaları',
     layer: 'dokuman',
+    icon: 'servocity',
     roles: ['cad', 'tedarik'],
     kind: 'kalici',
     desc: 'Üreticinin resmî CAD dosyaları. Montajda ölçü tartışmasını bitiriyor.',
@@ -339,6 +342,7 @@ export const RESOURCES = [
   {
     name: 'Blender4FTC · Fusion render rehberleri',
     layer: 'dokuman',
+    icon: 'blender',
     roles: ['cad', 'odul'],
     kind: 'kalici',
     desc: 'Robot görselini portfolyo kalitesinde üretmeyi öğreten rehberler. CAD ile ödül tarafını birleştiren köprü.',
@@ -433,6 +437,7 @@ export const RESOURCES = [
   {
     name: 'Onshape',
     layer: 'dokuman',
+    icon: 'onshape',
     roles: ['cad'],
     kind: 'kalici',
     star: true,
@@ -442,6 +447,7 @@ export const RESOURCES = [
   {
     name: 'Autodesk Fusion · Inventor',
     layer: 'dokuman',
+    icon: 'autodesk',
     roles: ['cad'],
     kind: 'kalici',
     desc: 'Eğitim hesabıyla ücretsiz tam sürüm.',
@@ -450,6 +456,7 @@ export const RESOURCES = [
   {
     name: 'PTC Creo',
     layer: 'dokuman',
+    icon: 'creo',
     roles: ['cad'],
     kind: 'kalici',
     desc: 'Eğitim lisansı ile tam sürüm erişimi.',
@@ -458,6 +465,7 @@ export const RESOURCES = [
   {
     name: 'SolidWorks',
     layer: 'dokuman',
+    icon: 'solidworks',
     roles: ['cad'],
     kind: 'kalici',
     desc: 'Takım sponsorluk programı üzerinden başvuru.',

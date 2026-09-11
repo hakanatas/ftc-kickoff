@@ -11,6 +11,7 @@ kalır. Uzantı `.jpg`, `.png` ya da `.webp` olabilir.
 | `robot.jpg` | Slayt 12, beş yapı sistemi kartlarının üstünde | Takımın robotu ya da masadaki parçalar |
 | `atolye.jpg` | Slayt 18, canlı topluluk kartlarının üstünde | Atölyede çalışan takım |
 | `takim.jpg` | Slayt 22, kapanışın arka planı (soluk) | Geniş takım fotoğrafı, yatay |
+| `diagram.webp` | Slayt 14, elektronik dokümanları kartlarının üstünde | Kontrol sistemi bağlantı şeması; kırpılmadan beyaz zeminde gösterilir |
 
 Yuvalar geniş bir şerit olduğu için fotoğraf dikeyde kırpılır. Kırpmanın odak
 noktasını `js/slides.js` içindeki `photo` tanımına `pos: 'center 70%'` gibi bir

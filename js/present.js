@@ -1,4 +1,5 @@
 import { LAYERS, RESOURCES, PATHS, AWARDS, KICKOFF } from './data.js';
+import { iconImg } from './icon.js';
 import { SLIDES } from './slides.js';
 import { ART } from './art.js';
 
@@ -61,6 +62,7 @@ export function createDeck({ root, onOpen, onClose }) {
   /**
    * Fotoğraf yuvası. assets/photos/<file>.jpg|.png|.webp sırayla denenir;
    * spec.pos (CSS object-position) kırpmanın odak noktasını seçer;
+   * spec.fit = 'contain' şema gibi görselleri kırpmadan beyaz zeminde gösterir;
    * hiçbiri yoksa yuva kendini kaldırır ve varsa çizim görünür kalır.
    */
   function photo(spec, slide) {
@@ -70,14 +72,16 @@ export function createDeck({ root, onOpen, onClose }) {
     img.alt = spec.alt || '';
     img.decoding = 'async';
     if (spec.pos) img.style.objectPosition = spec.pos;
-    const exts = ['jpg', 'png', 'webp'];
+    if (spec.fit === 'contain') fig.classList.add('slide__photo--contain');
+    // Uzantı verilmişse (diagram.webp) doğrudan o dosya; yoksa sırayla dene.
+    const exts = /\.[a-z0-9]+$/i.test(spec.file) ? [''] : ['.jpg', '.png', '.webp'];
     let k = 0;
     const tryNext = () => {
       if (k >= exts.length) {
         fig.remove();
         return;
       }
-      img.src = `./assets/photos/${spec.file}.${exts[k++]}`;
+      img.src = `./assets/photos/${spec.file}${exts[k++]}`;
     };
     img.addEventListener('error', tryNext);
     img.addEventListener('load', () => {
@@ -112,6 +116,8 @@ export function createDeck({ root, onOpen, onClose }) {
       <h3 class="scard__name">${r.name}</h3>
       <p class="scard__desc">${r.desc}</p>
       <span class="scard__url${r.url ? '' : ' is-soon'}">${host}</span>`;
+    const ic = iconImg(r, 'scard__icon');
+    if (ic) n.querySelector('.scard__name').prepend(ic);
     return n;
   }
 

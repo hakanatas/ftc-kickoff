@@ -127,7 +127,7 @@ export const SLIDES = [
   {
     kind: 'cards',
     names: ['Robot Wiring Guide', 'ESD Mitigation analizi', 'FTC Docs · Control System'],
-    art: 'wiring',
+    photo: { file: 'diagram.webp', alt: 'REV kontrol sistemi bağlantı şeması: batarya, şalter, Control Hub, motorlar, servo ve sensörler', fit: 'contain' },
     kicker: 'Mekanik — elektronik',
     title: 'Elektroniğin iki resmî dokümanı',
     lede: 'Sahada en çok zaman kaybettiren iki sorunun cevabı burada yazılı.',

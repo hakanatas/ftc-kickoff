@@ -119,7 +119,7 @@ export function createDeck({ root, onOpen, onClose }) {
         <div class="spanel spanel--gold">
           <p class="spanel__tag">Kalıcı</p>
           <h3>Yıllar boyu aynı</h3>
-          <ul><li>Game Manual</li><li>FTC Docs: kontrol sistemi, vision</li><li>Java ve kontrol teorisi kaynakları</li><li>CAD kütüphaneleri, hesaplayıcılar</li></ul>
+          <ul><li>Game Manual 0</li><li>FTC Docs: kontrol sistemi, vision</li><li>Java ve kontrol teorisi kaynakları</li><li>CAD kütüphaneleri, hesaplayıcılar</li></ul>
           <p class="spanel__foot">Bir kere öğrenilir, her sezon geri döner. <b>Asıl yatırım burada.</b></p>
         </div>`;
       b.appendChild(g);

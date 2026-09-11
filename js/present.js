@@ -60,6 +60,7 @@ export function createDeck({ root, onOpen, onClose }) {
 
   /**
    * Fotoğraf yuvası. assets/photos/<file>.jpg|.png|.webp sırayla denenir;
+   * spec.pos (CSS object-position) kırpmanın odak noktasını seçer;
    * hiçbiri yoksa yuva kendini kaldırır ve varsa çizim görünür kalır.
    */
   function photo(spec, slide) {
@@ -68,6 +69,7 @@ export function createDeck({ root, onOpen, onClose }) {
     const img = document.createElement('img');
     img.alt = spec.alt || '';
     img.decoding = 'async';
+    if (spec.pos) img.style.objectPosition = spec.pos;
     const exts = ['jpg', 'png', 'webp'];
     let k = 0;
     const tryNext = () => {

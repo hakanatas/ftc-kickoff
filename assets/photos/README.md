@@ -12,6 +12,10 @@ kalır. Uzantı `.jpg`, `.png` ya da `.webp` olabilir.
 | `atolye.jpg` | Slayt 18, canlı topluluk kartlarının üstünde | Atölyede çalışan takım |
 | `takim.jpg` | Slayt 22, kapanışın arka planı (soluk) | Geniş takım fotoğrafı, yatay |
 
+Yuvalar geniş bir şerit olduğu için fotoğraf dikeyde kırpılır. Kırpmanın odak
+noktasını `js/slides.js` içindeki `photo` tanımına `pos: 'center 70%'` gibi bir
+CSS `object-position` değeri ekleyerek kaydırabilirsiniz.
+
 Öneriler: uzun kenar 1600 piksel, JPG, dosya başına 400 KB altı. Sayfa
 GitHub Pages'ten yüklendiği için büyük dosyalar sunumu yavaşlatır.
 

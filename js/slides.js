@@ -109,7 +109,7 @@ export const SLIDES = [
   {
     kind: 'cards',
     names: ['goBILDA', 'REV Robotics', 'TETRIX (Pitsco)', 'AndyMark', 'Studica'],
-    photo: { file: 'robot', alt: 'Takımın robotu' },
+    photo: { file: 'robot', alt: 'Takımın robotu', pos: 'center 72%' },
     kicker: 'Mekanik — tedarik',
     title: 'Beş yapı sistemi, tek saha',
     lede: 'Starter kit sadece giriş kapısı. Beşi de legal ve sahada yan yana yarışıyor.',

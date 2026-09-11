@@ -239,15 +239,15 @@ export const RESOURCES = [
     roles: ['yazilim'],
     kind: 'kalici',
     desc: "Java'yı sıfırdan öğreten ücretsiz PDF kitap. Programlamaya yeni başlayan için ilk durak.",
-    url: '',
+    url: 'https://github.com/alan412/LearnJavaForFTC',
   },
   {
     name: 'REV · Introduction to Programming',
     layer: 'dokuman',
     roles: ['yazilim'],
     kind: 'kalici',
-    desc: 'Üreticinin kendi programlamaya giriş serisi. Control Hub ile birlikte ilerliyor.',
-    url: '',
+    desc: "Üreticinin Hello Robot serisi: Control Hub üstünde Blocks ve OnBot Java ile ilk OpMode'dan kapalı çevrim kontrole.",
+    url: 'https://docs.revrobotics.com/duo-control/hello-robot-java/welcome',
   },
   {
     name: 'FtcRobotController',
@@ -295,7 +295,7 @@ export const RESOURCES = [
     roles: ['yazilim'],
     kind: 'kalici',
     desc: 'Görüntü işleme: AprilTag okuma, renk tespiti, nesne takibi.',
-    url: '',
+    url: 'https://ftc-docs.firstinspires.org/en/latest/apriltag/vision_portal/visionportal_overview/visionportal-overview.html',
   },
   {
     name: 'FTC Dashboard · Panels',
@@ -416,7 +416,7 @@ export const RESOURCES = [
     roles: ['video', 'kural'],
     kind: 'sezonluk',
     desc: 'Resmî kanal: sezon tanıtımı, oyun animasyonu, kural açıklama videoları, şampiyona yayınları.',
-    url: '',
+    url: 'https://www.youtube.com/user/FIRSTTechChallenge',
   },
   {
     name: 'REV Robotics · YouTube',
@@ -424,7 +424,7 @@ export const RESOURCES = [
     roles: ['video', 'elektronik', 'yazilim'],
     kind: 'kalici',
     desc: 'Starter Bot yapım turu, Control Hub kurulumu, programlamaya giriş serisi.',
-    url: '',
+    url: 'https://www.youtube.com/@REVrobotics',
   },
   {
     name: 'goBILDA · YouTube',
@@ -432,7 +432,7 @@ export const RESOURCES = [
     roles: ['video', 'mekanik'],
     kind: 'kalici',
     desc: 'Yapı sistemi anlatımları ve Robot-in-3-Days serisi. Sezon başında hızlı prototip için.',
-    url: '',
+    url: 'https://www.youtube.com/c/goBILDA',
   },
   {
     name: '8644 Brainstormers · Tips & Tricks',
@@ -440,7 +440,7 @@ export const RESOURCES = [
     roles: ['video', 'mekanik'],
     kind: 'kalici',
     desc: 'FTC mekaniğini en derli toplu anlatan takım serisi.',
-    url: '',
+    url: 'https://www.youtube.com/@Brainstormers8644',
   },
   {
     name: '9794 Wizards.exe',
@@ -448,15 +448,15 @@ export const RESOURCES = [
     roles: ['video', 'mekanik'],
     kind: 'kalici',
     desc: 'Mekanizma tasarımı ve robot tanıtımları; ileri seviye yapım detayları.',
-    url: '',
+    url: 'https://www.youtube.com/channel/UC988iYaWDOF7Fpv6HqN-wjQ',
   },
   {
     name: 'Robot reveal videoları',
     layer: 'canli',
     roles: ['video', 'mekanik'],
     kind: 'sezonluk',
-    desc: 'Diğer takımların tasarımlarını görmenin en hızlı yolu. Sezon ortasında düzenli tarayın.',
-    url: '',
+    desc: 'Diğer takımların tasarımlarını görmenin en hızlı yolu. Adres hazır bir YouTube araması; sezon adını ekleyip düzenli tarayın.',
+    url: 'https://www.youtube.com/results?search_query=ftc+robot+reveal',
   },
 
   // --- CAD programları -----------------------------------------------------
@@ -485,8 +485,8 @@ export const RESOURCES = [
     icon: 'creo',
     roles: ['cad'],
     kind: 'kalici',
-    desc: 'Eğitim lisansı ile tam sürüm erişimi.',
-    url: '',
+    desc: "PTC'nin FIRST programı: Creo, Mathcad ve Onshape takımlara ücretsiz. Lisans yıllık, yeniden başvuruyla uzuyor.",
+    url: 'https://www.ptc.com/en/education/first',
   },
   {
     name: 'SolidWorks',
@@ -548,7 +548,7 @@ export const RESOURCES = [
     kind: 'kalici',
     star: true,
     desc: "FRC ve FTC'ye özel üretim: swerve modül, lineer sürüş, mecanum, dişli, gövde elemanı, elektronik ve kit.",
-    url: '',
+    url: 'https://nfrproducts.com',
     local: true,
   },
   {
@@ -557,7 +557,7 @@ export const RESOURCES = [
     roles: ['tedarik'],
     kind: 'kalici',
     desc: "FTC Türkiye'nin listelediği tedarikçilerden; yarışma parçaları üzerine.",
-    url: '',
+    url: 'https://robopiece.com',
     local: true,
   },
   {
@@ -566,7 +566,7 @@ export const RESOURCES = [
     roles: ['tedarik'],
     kind: 'kalici',
     desc: 'Motor, batarya, tekerlek, şasi ve hareket bileşenleri; sezona özel ürün grubu.',
-    url: '',
+    url: 'https://wattos.com.tr',
     local: true,
   },
   {

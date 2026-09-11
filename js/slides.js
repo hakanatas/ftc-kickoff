@@ -148,7 +148,7 @@ export const SLIDES = [
   },
   {
     kind: 'cards',
-    names: ['Onshape', 'Autodesk Fusion · Inventor', 'PTC Creo', 'SolidWorks', '2901 Purple Gears · Onshape kütüphanesi', '10650 Hazmat · GrabCAD arşivi', 'ServoCity CAD dosyaları', 'Blender4FTC · Fusion render rehberleri'],
+    names: ['Onshape', 'Autodesk Fusion · Inventor', 'SolidWorks', '2901 Purple Gears · Onshape kütüphanesi', '10650 Hazmat · GrabCAD arşivi', 'Blender4FTC · Fusion render rehberleri'],
     kicker: 'CAD',
     title: 'Profesyonel CAD, öğrenciye ücretsiz',
     lede: 'Çoğu öğrenci bu programlara bedava erişebileceğini bilmiyor.',

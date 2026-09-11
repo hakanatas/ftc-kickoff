@@ -345,7 +345,7 @@ export const RESOURCES = [
     roles: ['cad'],
     kind: 'kalici',
     desc: 'Hazır FTC parça kütüphanesi. Vidayı sıfırdan çizmek yerine sürükleyip montaja geçiyorsunuz.',
-    url: '',
+    url: 'https://ftconshape.com/introduction-to-the-ftc-parts-library/',
   },
   {
     name: '10650 Hazmat · GrabCAD arşivi',
@@ -372,7 +372,7 @@ export const RESOURCES = [
     roles: ['cad', 'odul'],
     kind: 'kalici',
     desc: 'Robot görselini portfolyo kalitesinde üretmeyi öğreten rehberler. CAD ile ödül tarafını birleştiren köprü.',
-    url: '',
+    url: 'https://ryanhcode.gitbook.io/blender4ftc',
   },
 
   // --- katman 3: canlı topluluk -------------------------------------------
@@ -495,7 +495,7 @@ export const RESOURCES = [
     roles: ['cad'],
     kind: 'kalici',
     desc: 'Takım sponsorluk programı üzerinden başvuru.',
-    url: '',
+    url: 'https://www.solidworks.com/product/students/free-solidworks-first-robotics-teams',
   },
 
   // --- yapı sistemleri -----------------------------------------------------

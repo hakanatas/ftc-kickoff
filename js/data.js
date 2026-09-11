@@ -383,7 +383,7 @@ export const RESOURCES = [
     kind: 'kalici',
     star: true,
     desc: 'Kod hatası, mekanizma fikri, kural yorumu için gerçek zamanlı yardım. En canlı kanal.',
-    url: '',
+    url: 'https://discord.gg/first-tech-challenge',
   },
   {
     name: 'Chief Delphi',
@@ -408,7 +408,7 @@ export const RESOURCES = [
     roles: ['odul', 'kural'],
     kind: 'sezonluk',
     desc: 'Takım ve maç istatistikleri. Turnuva öncesi ittifak stratejisi burada kurulur.',
-    url: '',
+    url: 'https://ftcscout.org',
   },
   {
     name: 'FIRST Tech Challenge · YouTube',

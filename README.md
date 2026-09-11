@@ -46,6 +46,18 @@ Sunumdaki atlas, katman testi, sipariş kaydırıcısı ve görev listesi kopya
 değil: sayfanın asıl parçaları slayda taşınır, çıkışta yerine döner. Yani
 sunum sırasında canlı arama yapabilirsiniz.
 
+## Yayına alma (tek seferlik)
+
+Depoda GitHub Pages'in bir kez elle açılması gerekiyor; iş akışının kendi
+jetonu Pages sitesini oluşturma yetkisine sahip değil.
+
+1. Depo → **Settings** → **Pages**
+2. **Build and deployment** altında **Source** = **GitHub Actions**
+
+Bu kadar. Bundan sonra `main` dalına her push yayına çıkar; `.github/workflows/pages.yml`
+siteyi kendisi derleyip yükler. Açmadan önceki ilk çalıştırma
+"Create Pages site failed" ile başarısız olur, normaldir.
+
 ## Yerelde çalıştırma
 
 Sayfa ES modülleri kullandığı için dosyayı çift tıklayarak açmak yetmez,

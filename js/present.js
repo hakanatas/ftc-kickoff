@@ -247,7 +247,7 @@ export function createDeck({ root, onOpen, onClose }) {
     cards(s) {
       const b = el('div');
       b.appendChild(head(s));
-      const a = s.art && art(s.art);
+      const a = s.art && art(s.art, `slide__art${s.artShort ? ' slide__art--short' : ''}`);
       if (a) b.appendChild(a);
       const p = photo(s.photo, b);
       if (p) b.appendChild(p);

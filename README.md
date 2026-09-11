@@ -26,7 +26,7 @@ Fotoğraflar `assets/photos/` klasöründen gelir; hangi dosya adının hangi
 slayta düştüğü oradaki README'de yazılı. Dosya yoksa yerinde çizim kalır.
 
 Çizimler (`js/art.js`) dışarıdan görsel kullanmaz: robot, zaman çizelgesi,
-katman halkaları, dişli çifti ve sipariş pencereleri sayfayla aynı paletten
+katman halkaları, FTC Docs laptopu, dişli çifti ve sipariş pencereleri sayfayla aynı paletten
 SVG olarak üretilir. Kart logoları `assets/icons/` klasöründen gelir; ayrıntı
 oradaki README'de.
 

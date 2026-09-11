@@ -590,6 +590,7 @@ body { font-size: 18.5px; }
 @media (max-width: 600px) { .art--timeline, .supply__art { display: none; } }
 
 .slide__art svg { max-height: 30vh; }
+.slide__art--short svg { max-height: 21vh; }
 .slide__art--cover svg { max-height: 62vh; }
 .slide__cover--art { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); align-items: center; gap: clamp(24px, 4vw, 56px); justify-items: stretch; }
 .slide__cover__text { display: grid; gap: 22px; justify-items: start; }

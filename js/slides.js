@@ -69,7 +69,8 @@ export const SLIDES = [
   {
     kind: 'cards',
     names: ['FTC Docs', 'FTC Docs · Control System', 'FTC Docs · SDK', 'FTC Docs · Vision'],
-    photo: { file: 'yazilim', alt: 'Yazılım ekibi masada robotla çalışıyor', short: true },
+    art: 'docs',
+    artShort: true,
     kicker: 'Katman 1 — resmî FIRST',
     title: 'FTC Docs: teknik tarafın resmî evi',
     lede: 'Çoğu yeni takımın hiç açmadan sezona girdiği kaynak.',

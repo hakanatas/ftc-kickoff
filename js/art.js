@@ -279,4 +279,86 @@ export function gears() {
 /** Sipariş çizelgesinde kalan haftayı x konumuna çevirir (viewBox birimi). */
 export const windowX = (remaining) => 70 + ((890 - 70) * (12 - Math.min(12, Math.max(0, remaining)))) / 12;
 
-export const ART = { robot, timeline, rings, gears, windows: () => timeline({ zones: true }) };
+// ---------------------------------------------------------------------------
+// FTC Docs: ekranında doküman sitesi açık laptop, USB ile bağlı Control Hub
+// ve webcam. "Teknik tarafın resmî evi" slaydı için.
+// ---------------------------------------------------------------------------
+export function docs() {
+  const W = 960;
+  const H = 300;
+  let b = '';
+  // zemin çizgisi
+  b += `<line x1="40" y1="262" x2="${W - 40}" y2="262" stroke="${C.paper}" stroke-opacity="0.22" stroke-width="1.5" />`;
+
+  // --- laptop ---
+  const sx = 110;
+  const sy = 34;
+  const sw = 430;
+  const sh = 212;
+  b += `<rect x="${sx - 8}" y="${sy - 8}" width="${sw + 16}" height="${sh + 16}" rx="12" fill="${C.deep}" stroke="${C.sage}" stroke-width="1.8" />
+    <rect x="${sx}" y="${sy}" width="${sw}" height="${sh}" rx="6" fill="#0a1c14" />
+    <path d="M${sx - 60} 262 L${sx - 30} ${sy + sh + 8} H${sx + sw + 38} L${sx + sw + 68} 262 Z" fill="${C.deep}" stroke="${C.sage}" stroke-width="1.8" />
+    <rect x="${sx + sw / 2 - 40}" y="${sy + sh + 12}" width="80" height="6" rx="3" fill="${C.sage}" fill-opacity="0.5" />`;
+  // tarayıcı çubuğu
+  b += `<rect x="${sx}" y="${sy}" width="${sw}" height="26" rx="6" fill="${C.paper}" fill-opacity="0.07" />
+    <circle cx="${sx + 14}" cy="${sy + 13}" r="3.5" fill="${C.red}" fill-opacity="0.8" /><circle cx="${sx + 26}" cy="${sy + 13}" r="3.5" fill="${C.gold}" fill-opacity="0.8" /><circle cx="${sx + 38}" cy="${sy + 13}" r="3.5" fill="${C.sage}" fill-opacity="0.8" />
+    <rect x="${sx + 54}" y="${sy + 6}" width="${sw - 68}" height="14" rx="7" fill="${C.paper}" fill-opacity="0.08" />
+    <text x="${sx + 64}" y="${sy + 16.5}" fill="${C.dim}" font-size="10.5" style="${SANS}">ftc-docs.firstinspires.org</text>`;
+  // kenar çubuğu: bölümler
+  const items = ['Getting Started', 'Control System', 'SDK', 'Vision · AprilTag', 'Wiring Guide', 'ESD', 'CAD Resources'];
+  const lx = sx + 12;
+  let ly = sy + 44;
+  b += `<line x1="${sx + 138}" y1="${sy + 30}" x2="${sx + 138}" y2="${sy + sh - 6}" stroke="${C.paper}" stroke-opacity="0.12" />`;
+  for (const [i, t] of items.entries()) {
+    const hot = i === 1;
+    if (hot) b += `<rect x="${lx - 6}" y="${ly - 12}" width="128" height="20" rx="5" fill="${C.gold}" fill-opacity="0.16" />`;
+    b += `<circle cx="${lx + 3}" cy="${ly - 2.5}" r="2.2" fill="${hot ? C.gold : C.sage}" />
+      <text x="${lx + 12}" y="${ly + 1.5}" fill="${hot ? C.goldSoft : C.paper}" fill-opacity="${hot ? 1 : 0.75}" font-size="11" font-weight="${hot ? 600 : 400}" style="${SANS}">${t}</text>`;
+    ly += 24;
+  }
+  // ana alan: başlık + satırlar + küçük şema
+  const mx = sx + 156;
+  b += `<text x="${mx}" y="${sy + 56}" fill="${C.paper}" font-size="15" font-weight="500" style="${SERIF}">Control System</text>
+    <line x1="${mx}" y1="${sy + 64}" x2="${mx + 60}" y2="${sy + 64}" stroke="${C.gold}" stroke-width="1.5" />`;
+  const lines = [220, 250, 180, 236, 150];
+  lines.forEach((w, i) => {
+    b += `<rect x="${mx}" y="${sy + 78 + i * 13}" width="${w}" height="5" rx="2.5" fill="${C.paper}" fill-opacity="0.18" />`;
+  });
+  // mini bağlantı şeması
+  b += `<rect x="${mx}" y="${sy + 150}" width="54" height="34" rx="4" fill="${C.gold}" fill-opacity="0.18" stroke="${C.gold}" stroke-width="1" />
+    <rect x="${mx + 110}" y="${sy + 150}" width="54" height="34" rx="4" fill="${C.sage}" fill-opacity="0.16" stroke="${C.sage}" stroke-width="1" />
+    <line x1="${mx + 54}" y1="${sy + 167}" x2="${mx + 110}" y2="${sy + 167}" stroke="${C.paper}" stroke-opacity="0.5" stroke-width="1.5" />
+    <line x1="${mx + 27}" y1="${sy + 184}" x2="${mx + 27}" y2="${sy + 200}" stroke="${C.paper}" stroke-opacity="0.4" stroke-width="1.5" />
+    <circle cx="${mx + 27}" cy="${sy + 205}" r="5" fill="none" stroke="${C.paper}" stroke-opacity="0.5" />
+    <text x="${mx + 190}" y="${sy + 172}" fill="${C.dim}" font-size="10" style="${SANS}">wiring diagram</text>`;
+
+  // --- USB kablosu ---
+  b += `<path d="M${sx + sw + 8} 150 C 640 150, 620 200, 690 200" fill="none" stroke="${C.gold}" stroke-width="2" stroke-dasharray="6 5" />
+    <text x="600" y="140" text-anchor="middle" fill="${C.gold}" font-size="10.5" letter-spacing="1.6" style="${SANS}">USB · WI-FI</text>`;
+
+  // --- Control Hub ---
+  const hx = 690;
+  const hy = 150;
+  const hw = 200;
+  const hh = 100;
+  b += `<rect x="${hx}" y="${hy}" width="${hw}" height="${hh}" rx="10" fill="${C.deep}" stroke="${C.sage}" stroke-width="1.8" />
+    <path d="M${hx + 118} ${hy + 1} h60 l-34 ${hh - 2} h-60 z" fill="${C.gold}" fill-opacity="0.22" />
+    <text x="${hx + 16}" y="${hy + 40}" fill="${C.paper}" font-size="13" letter-spacing="1.6" style="${SANS}">CONTROL</text>
+    <text x="${hx + 16}" y="${hy + 58}" fill="${C.paper}" font-size="13" letter-spacing="1.6" style="${SANS}">HUB</text>`;
+  for (let i = 0; i < 6; i++) b += `<rect x="${hx + 14 + i * 30}" y="${hy + hh - 16}" width="18" height="8" rx="2" fill="${C.sage}" fill-opacity="0.55" />`;
+  for (let i = 0; i < 4; i++) b += `<rect x="${hx + hw - 10}" y="${hy + 14 + i * 20}" width="8" height="12" rx="2" fill="${C.sage}" fill-opacity="0.55" />`;
+  b += `<line x1="${hx + hw / 2}" y1="${hy + hh}" x2="${hx + hw / 2}" y2="262" stroke="${C.paper}" stroke-opacity="0.25" />`;
+
+  // --- webcam ---
+  b += `<path d="M${hx + 40} ${hy} C ${hx + 40} 100, ${hx + 90} 100, ${hx + 90} 78" fill="none" stroke="${C.sage}" stroke-width="1.6" />
+    <rect x="${hx + 62}" y="40" width="56" height="40" rx="10" fill="${C.deep}" stroke="${C.sage}" stroke-width="1.6" />
+    <circle cx="${hx + 90}" cy="60" r="11" fill="none" stroke="${C.sage}" stroke-width="1.6" /><circle cx="${hx + 90}" cy="60" r="4.5" fill="${C.sky}" />
+    <text x="${hx + 130}" y="64" fill="${C.dim}" font-size="10.5" style="${SANS}">webcam</text>`;
+
+  // alt yazılar
+  b += `<text x="${sx + sw / 2}" y="288" text-anchor="middle" fill="${C.dim}" font-size="12" letter-spacing="1.6" style="${SANS}">RESMÎ DOKÜMAN · TEK ADRES</text>
+    <text x="${hx + hw / 2}" y="288" text-anchor="middle" fill="${C.dim}" font-size="12" letter-spacing="1.6" style="${SANS}">SAHADAKİ DONANIM</text>`;
+  return svg(W, H, b, 'FTC Docs çizimi: ekranında doküman sitesinin bölüm listesi açık bir laptop, USB ile bağlı Control Hub ve webcam');
+}
+
+export const ART = { robot, timeline, rings, gears, docs, windows: () => timeline({ zones: true }) };

@@ -11,7 +11,6 @@ kalır. Uzantı `.jpg`, `.png` ya da `.webp` olabilir.
 | `robot.jpg` | Slayt 13, beş yapı sistemi kartlarının üstünde | Takımın robotu ya da masadaki parçalar |
 | `atolye.jpg` | Slayt 20, canlı topluluk kartlarının üstünde | Atölyede çalışan takım |
 | `takim.jpg` | Slayt 24, kapanışın arka planı (soluk) | Geniş takım fotoğrafı, yatay |
-| `yazilim.jpg` | Slayt 8, FTC Docs kartlarının üstünde (kısa şerit) | Yazılım ekibi bilgisayar ve robotla |
 | `kod.jpg` | Slayt 11, üç programlama yolunun üstünde (kısa şerit) | Ekranda kod, elde Driver Station |
 | `juri.webp` | Slayt 18, jüri değişiklik tablosunun üstünde (kısa şerit) | Jüri görüşmesi anı |
 | `yerel.jpg` | Slayt 9, Türkçe giriş katmanı maddelerinin üstünde | Türkiye turnuvasından bir kare |

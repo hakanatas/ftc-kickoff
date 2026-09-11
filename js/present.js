@@ -296,26 +296,76 @@ export function createDeck({ root, onOpen, onClose }) {
       const wrap = el('div', 'chg');
       wrap.innerHTML = `
         <div class="chg__row chg__row--head" aria-hidden="true">
-          <span class="chg__c chg__c--topic">Ne değişti</span>
+          <span class="chg__c chg__c--topic">Ne değişti <small>üzerine gelince büyür · tıklayınca sabit kalır</small></span>
           <span class="chg__c chg__c--before">Önce <small>DECODE 2025–26</small></span>
           <span class="chg__c chg__c--arrow">→</span>
           <span class="chg__c chg__c--after">Şimdi <small>BIOBUZZ 2026–27</small></span>
         </div>`;
-      s.items.forEach((key, k) => {
-        const c = CHANGES[key];
-        const row = el('div', 'chg__row');
-        row.style.setProperty('--i', k);
-        row.innerHTML = `
+      const cells = (c, big = false) => `
           <div class="chg__c chg__c--topic">
             <span class="chg__tag">${c.tag}</span>
             <span class="chg__title">${c.title}</span>
             <span class="chg__who">${c.who}</span>
           </div>
-          <div class="chg__c chg__c--before"><span class="chg__label">Önce</span>${c.before}</div>
+          <div class="chg__c chg__c--before"><span class="chg__label">Önce · DECODE</span>${c.before}</div>
           <div class="chg__c chg__c--arrow" aria-hidden="true">→</div>
-          <div class="chg__c chg__c--after"><span class="chg__label">Şimdi</span>${c.after}${c.note ? `<span class="chg__note">${c.note}</span>` : ''}</div>`;
+          <div class="chg__c chg__c--after"><span class="chg__label">Şimdi · BIOBUZZ</span>${c.after}${big && c.note ? `<span class="chg__note">${c.note}</span>` : ''}</div>`;
+      // büyüteç: üzerine gelinen satır büyük puntoyla tablonun üstünde açılır
+      const zoom = el('div', 'chg__zoom');
+      zoom.hidden = true;
+      zoom.setAttribute('aria-live', 'polite');
+      let pinned = null;
+      let muted = false; // panel tıklanıp kapatıldıysa imleç ayrılana kadar yeniden açılmasın
+      const show = (key) => {
+        zoom.innerHTML = cells(CHANGES[key], true);
+        zoom.hidden = false;
+        wrap.classList.add('is-zoomed');
+      };
+      const hide = () => {
+        zoom.hidden = true;
+        wrap.classList.remove('is-zoomed');
+      };
+      s.items.forEach((key, k) => {
+        const c = CHANGES[key];
+        const row = el('div', 'chg__row');
+        row.style.setProperty('--i', k);
+        row.tabIndex = 0;
+        row.setAttribute('role', 'button');
+        row.setAttribute('aria-label', `${c.title}: büyüt`);
+        row.innerHTML = cells(c);
+        row.addEventListener('mouseenter', () => {
+          if (!pinned && !muted) show(key);
+        });
+        row.addEventListener('focus', () => {
+          if (!pinned) show(key);
+        });
+        row.addEventListener('click', () => {
+          if (pinned === key) {
+            pinned = null;
+            wrap.classList.remove('is-pinned');
+            hide();
+          } else {
+            pinned = key;
+            wrap.classList.add('is-pinned');
+            show(key);
+          }
+        });
+        row.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') row.click();
+        });
         wrap.appendChild(row);
       });
+      wrap.addEventListener('mouseleave', () => {
+        muted = false;
+        if (!pinned) hide();
+      });
+      zoom.addEventListener('click', () => {
+        pinned = null;
+        muted = true;
+        wrap.classList.remove('is-pinned');
+        hide();
+      });
+      wrap.appendChild(zoom);
       b.appendChild(wrap);
       const f = foot(s);
       if (f) b.appendChild(f);

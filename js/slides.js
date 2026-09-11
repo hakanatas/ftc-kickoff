@@ -64,7 +64,7 @@ export const SLIDES = [
     title: 'Manual yeniden yazıldı',
     lede: 'Aynı 18 inç küp, aynı saha mantığı; ama kuralın anlatılma biçimi değişti.',
     foot: 'Kaynak: BIOBUZZ Competition Manual ön sürüm duyurusu. Ayrıntıyı kickoff sonrası tam manual ile doğrulayın.',
-    note: 'Satır satır: sol eski, sağ yeni. "Kuralın ruhu" en önemlisi: hakemle konuşurken madde numarası yerine niyet konuşulacak.',
+    note: 'Satırın üzerine gelince büyük puntoyla açılır; tıklarsanız sabit kalır. "Kuralın ruhu" en önemlisi: hakemle konuşurken madde numarası yerine niyet konuşulacak.',
   },
   {
     kind: 'pollen',
@@ -178,7 +178,7 @@ export const SLIDES = [
     title: 'Jüri odası da değişti',
     lede: 'Görüşmenin adı, portfolyonun yeri ve ödül tablosu. Ödül ekibini en çok ilgilendiren üç kart.',
     foot: 'Initial Interview\'a katılmayan takım jüri ödüllerine aday olamıyor. Tarih çakışmasına dikkat.',
-    note: 'Motivate\'in bölünmesi DECODE\'dan; sunumda hâlâ eski adıyla anılıyorsa düzeltin. Hangi ödüllerin portfolyo istediğini ödül tablosundan okuyup portfolyo ekibine verin.',
+    note: 'Satıra gelince büyür, tıklayınca sabit kalır. Motivate\'in bölünmesi DECODE\'dan; sunumda hâlâ eski adıyla anılıyorsa düzeltin. Hangi ödüllerin portfolyo istediğini ödül tablosundan okuyup portfolyo ekibine verin.',
   },
   {
     kind: 'awards',

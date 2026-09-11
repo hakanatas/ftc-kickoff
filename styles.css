@@ -409,14 +409,14 @@ body.is-present { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .dline--today .dline__dot { animation: none; } }
 
 /* ---- önce / şimdi karşılaştırması (changes) ------------------------------ */
-.chg { display: grid; gap: 8px; }
+.chg { position: relative; display: grid; gap: 7px; }
 .chg__row { display: grid; grid-template-columns: minmax(180px, 0.9fr) 1.5fr 28px 1.6fr; gap: 12px; align-items: stretch; }
 .chg__row--head { padding: 0 4px 2px; }
 .chg__row--head .chg__c { padding: 0; border: 0; background: transparent; font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage-dim); font-weight: 600; align-self: end; }
 .chg__row--head .chg__c small { display: block; margin-top: 2px; font-size: 11px; letter-spacing: 0.08em; font-weight: 400; text-transform: none; color: var(--sage-dim); }
 .chg__row--head .chg__c--after { color: var(--gold); }
 .chg__row--head .chg__c--after small { color: var(--gold); opacity: 0.8; }
-.chg__c { display: block; padding: clamp(12px, 1.3vw, 18px) clamp(14px, 1.5vw, 20px); border-radius: 14px; border: 1px solid var(--line); background: var(--glass); font-size: clamp(14px, 1.2vw, 18.5px); line-height: 1.38; }
+.chg__c { display: block; padding: clamp(10px, 1.1vw, 16px) clamp(12px, 1.3vw, 18px); border-radius: 14px; border: 1px solid var(--line); background: var(--glass); font-size: clamp(14.5px, 1.25vw, 21px); line-height: 1.36; }
 .chg__c--topic { display: grid; align-content: start; gap: 6px; background: transparent; }
 .chg__c--before { color: var(--paper-dim); }
 .chg__c--arrow { display: grid; place-items: center; padding: 0; border: 0; background: transparent; color: var(--gold); font-size: clamp(20px, 2vw, 30px); }
@@ -425,10 +425,27 @@ body.is-present { overflow: hidden; }
 .chg__label { display: none; margin-bottom: 4px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage-dim); }
 .chg__c--after .chg__label { color: var(--gold); }
 .chg__tag { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
-.chg__title { font-family: var(--serif); font-size: clamp(19px, 1.8vw, 28px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; color: var(--paper); }
+.chg__title { font-family: var(--serif); font-size: clamp(19px, 1.75vw, 29px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; color: var(--paper); }
 .chg__who { margin-top: auto; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-dim); }
 .chg__note { display: block; margin-top: 8px; font-size: clamp(12.5px, 1.05vw, 16px); color: var(--gold-soft); border-left: 2px solid var(--gold); padding-left: 10px; }
-.chg__row:not(.chg__row--head) { animation: chgin 0.5s var(--ease) both; animation-delay: calc(120ms + var(--i) * 90ms); }
+.chg__row:not(.chg__row--head) { cursor: zoom-in; border-radius: 14px; transition: opacity 0.25s, transform 0.25s var(--ease); animation: chgin 0.5s var(--ease) both; animation-delay: calc(120ms + var(--i) * 90ms); }
+.chg__row:not(.chg__row--head):hover .chg__c--after { border-color: var(--gold); }
+.chg__row:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.chg.is-zoomed .chg__row { opacity: 0.18; }
+/* büyüteç paneli */
+.chg__zoom { position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 2; display: grid; grid-template-columns: minmax(200px, 0.8fr) 1.25fr 36px 1.4fr; gap: 16px; align-content: center; padding: clamp(18px, 2.2vw, 32px); border-radius: 20px; border: 1px solid rgba(224, 149, 47, 0.55); background: var(--ink); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); cursor: zoom-out; pointer-events: none; animation: chgzoom 0.22s var(--ease) both; }
+.chg.is-pinned .chg__zoom { pointer-events: auto; }
+.chg__zoom[hidden] { display: none; }
+.chg__zoom .chg__c { font-size: clamp(19px, 1.95vw, 32px); line-height: 1.4; padding: clamp(16px, 1.8vw, 26px) clamp(18px, 2vw, 28px); }
+.chg__zoom .chg__c--topic { background: transparent; border: 0; padding-left: 0; }
+.chg__zoom .chg__tag { font-size: clamp(13px, 1.1vw, 17px); }
+.chg__zoom .chg__title { font-size: clamp(28px, 3vw, 50px); }
+.chg__zoom .chg__who { font-size: clamp(12px, 1.05vw, 16px); }
+.chg__zoom .chg__label { display: block; margin-bottom: 8px; font-size: clamp(12px, 1.05vw, 16px); }
+.chg__zoom .chg__note { font-size: clamp(15px, 1.4vw, 23px); margin-top: 12px; }
+.chg__zoom .chg__c--arrow { font-size: clamp(28px, 3vw, 46px); }
+@keyframes chgzoom { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .chg__zoom { animation: none; } .chg__row:not(.chg__row--head) { transition: none; } }
 @keyframes chgin { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .chg__row:not(.chg__row--head) { animation: none; } }
 
@@ -480,6 +497,7 @@ body.is-present { overflow: hidden; }
   .dates, .pollen, .pollen__row { grid-template-columns: 1fr; }
   .chg__row { grid-template-columns: 1fr; gap: 6px; }
   .chg__row--head, .chg__c--arrow { display: none; }
+  .chg__zoom { grid-template-columns: 1fr; position: fixed; inset: 8px; overflow: auto; align-content: start; }
   .chg__label { display: block; }
   .chg__row:not(.chg__row--head) { padding-bottom: 8px; border-bottom: 1px solid var(--line); }
   .dline { grid-template-columns: 80px 14px 1fr; }

@@ -144,7 +144,7 @@ export const RESOURCES = [
     roles: ['elektronik'],
     kind: 'kalici',
     desc: 'Kablo kesiti, konnektör seçimi, batarya ve güç dağıtımı. Resmî doküman; inceleme de buna göre yapılıyor.',
-    url: '',
+    url: 'https://ftc-docs.firstinspires.org/en/latest/robot_building/wiring_guide/wiring-guide.html',
   },
   {
     name: 'ESD Mitigation analizi',
@@ -152,7 +152,7 @@ export const RESOURCES = [
     roles: ['elektronik'],
     kind: 'kalici',
     desc: 'Elektrostatik boşalmaya karşı koruma. Kuru kış aylarında saha kenarında kendiliğinden resetlenen robotların sebebi çoğu zaman bu.',
-    url: '',
+    url: 'https://ftc-resources.firstinspires.org/ftc/team/esd-mitigation',
   },
   {
     name: 'FTC Türkiye',

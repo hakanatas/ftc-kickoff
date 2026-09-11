@@ -22,6 +22,9 @@ tıklanır.* Bu depo o sayfa.
 | Sipariş penceresi | Turnuvaya kalan süreye göre yurt içi mi yurt dışı mı |
 | Bu hafta | Beş görev, tarayıcıda hatırlanan işaret kutuları |
 
+Fotoğraflar `assets/photos/` klasöründen gelir; hangi dosya adının hangi
+slayta düştüğü oradaki README'de yazılı. Dosya yoksa yerinde çizim kalır.
+
 Çizimler (`js/art.js`) dışarıdan görsel kullanmaz: robot, zaman çizelgesi,
 katman halkaları, kontrol sistemi şeması, dişli çifti ve sipariş pencereleri
 sayfayla aynı paletten SVG olarak üretilir.

@@ -9,6 +9,7 @@ export const SLIDES = [
   {
     kind: 'cover',
     art: 'robot',
+    photo: { file: 'kapak', alt: 'Takım ve robot' },
     eyebrow: 'AG Robotik · Sezon açılışı · 12 Eylül 2026',
     title: ['FTC Kaynakları ve', 'Eğitim Materyalleri'],
     lede: 'Yeni sezona başlarken neyi, nereden öğreneceğiz?',
@@ -48,6 +49,7 @@ export const SLIDES = [
   {
     kind: 'cards',
     names: ['Competition Manual', 'FTC Q&A', 'FTC Events'],
+    photo: { file: 'saha', alt: 'Turnuva sahası' },
     kicker: 'Katman 1 — resmî FIRST',
     title: 'Kuralın tek kaynağı',
     lede: 'Buradan gelen bilgi bağlayıcıdır; gerisi yorumdur.',
@@ -107,6 +109,7 @@ export const SLIDES = [
   {
     kind: 'cards',
     names: ['goBILDA', 'REV Robotics', 'TETRIX (Pitsco)', 'AndyMark', 'Studica'],
+    photo: { file: 'robot', alt: 'Takımın robotu' },
     kicker: 'Mekanik — tedarik',
     title: 'Beş yapı sistemi, tek saha',
     lede: 'Starter kit sadece giriş kapısı. Beşi de legal ve sahada yan yana yarışıyor.',
@@ -161,6 +164,7 @@ export const SLIDES = [
   {
     kind: 'cards',
     names: ['FTC Discord', 'Chief Delphi', 'Hivemind portfolyo arşivi', 'FTC Scout'],
+    photo: { file: 'atolye', alt: 'Atölyede çalışan takım' },
     kicker: 'Katman 3 — canlı topluluk',
     title: 'Cevabı yazılmamış sorular',
     lede: 'Takıldığınızda tek başınıza değilsiniz. Soru sormak zayıflık değil, yöntem.',
@@ -193,6 +197,7 @@ export const SLIDES = [
   },
   {
     kind: 'closing',
+    photo: { file: 'takim', alt: 'Takım fotoğrafı', bg: true },
     title: ['İyi takımlar iyi', 'robot yapmaz —', 'iyi öğrenir.'],
     lede: 'Bu sezon elimizdeki en büyük avantaj, sorunun cevabının nerede olduğunu bilmek. Gerisi çalışmak.',
     foot: 'AG Robotik · ALKEV Okulları · BIOBUZZ 2026–2027',

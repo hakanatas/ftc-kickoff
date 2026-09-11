@@ -502,3 +502,16 @@ body { font-size: 18.5px; }
   .slide__art--cover { display: none; }
   .slide__adopt .quiz { grid-template-columns: 1fr; }
 }
+
+/* ---- fotoğraf yuvaları (assets/photos) --------------------------------- */
+.slide__photo { margin: 0; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); background: var(--ink); }
+.slide__photo img { display: block; width: 100%; height: 100%; max-height: 32vh; object-fit: cover; }
+.slide__cover--art .slide__photo { grid-column: 2; grid-row: 1; align-self: center; }
+.slide__cover--art .slide__photo img { max-height: 66vh; height: auto; }
+.slide__cover--art.has-photo .slide__art--cover { display: none; }
+.slide__cover--closing { position: relative; }
+.slide__photo--bg { position: absolute; inset: -20vh -10vw; z-index: 0; border: 0; border-radius: 0; pointer-events: none; }
+.slide__photo--bg img { max-height: none; height: 100%; opacity: 0.22; filter: saturate(0.6); }
+.slide__photo--bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14, 42, 30, 0.35), rgba(14, 42, 30, 0.9)); }
+.slide__cover--closing > :not(.slide__photo) { position: relative; z-index: 1; }
+@media (max-width: 900px) { .slide__cover--art .slide__photo { grid-column: 1; grid-row: auto; } .slide__cover--art .slide__photo img { max-height: 32vh; } }

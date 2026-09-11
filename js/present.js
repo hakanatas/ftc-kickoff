@@ -58,6 +58,35 @@ export function createDeck({ root, onOpen, onClose }) {
     return s.foot ? el('p', 'slide__foot', s.foot) : null;
   }
 
+  /**
+   * Fotoğraf yuvası. assets/photos/<file>.jpg|.png|.webp sırayla denenir;
+   * hiçbiri yoksa yuva kendini kaldırır ve varsa çizim görünür kalır.
+   */
+  function photo(spec, slide) {
+    if (!spec) return null;
+    const fig = el('figure', `slide__photo${spec.bg ? ' slide__photo--bg' : ''}`);
+    const img = document.createElement('img');
+    img.alt = spec.alt || '';
+    img.decoding = 'async';
+    const exts = ['jpg', 'png', 'webp'];
+    let k = 0;
+    const tryNext = () => {
+      if (k >= exts.length) {
+        fig.remove();
+        return;
+      }
+      img.src = `./assets/photos/${spec.file}.${exts[k++]}`;
+    };
+    img.addEventListener('error', tryNext);
+    img.addEventListener('load', () => {
+      slide.classList.add('has-photo');
+      refit();
+    });
+    fig.appendChild(img);
+    tryNext();
+    return fig;
+  }
+
   /** Slayda çizim: art.js'teki isimle. */
   function art(name, cls = 'slide__art') {
     const fn = ART[name];
@@ -96,11 +125,15 @@ export function createDeck({ root, onOpen, onClose }) {
       b.appendChild(text);
       const a = s.art && art(s.art, 'slide__art slide__art--cover');
       if (a) b.appendChild(a);
+      const p = photo(s.photo, b);
+      if (p) b.appendChild(p);
       return b;
     },
     closing(s) {
-      const b = el('div', 'slide__cover');
-      b.innerHTML = `
+      const b = el('div', 'slide__cover slide__cover--closing');
+      const p = photo(s.photo, b);
+      if (p) b.appendChild(p);
+      b.innerHTML += `
         <h1 class="slide__big slide__big--quote">${s.title.join('<br />')}</h1>
         <p class="slide__lede">${s.lede}</p>
         <p class="slide__foot">${s.foot}</p>`;
@@ -191,6 +224,8 @@ export function createDeck({ root, onOpen, onClose }) {
       }
       const a = s.art && art(s.art);
       if (a) b.appendChild(a);
+      const p = photo(s.photo, b);
+      if (p) b.appendChild(p);
       const n = s.names.length;
       const cols = n <= 1 ? 1 : n === 2 ? 2 : n === 3 ? 3 : n === 4 ? 2 : n <= 6 ? 3 : 4;
       const g = el('div', `slide__cards slide__cards--${cols}${n >= 5 ? ' slide__cards--tight' : ''}`);

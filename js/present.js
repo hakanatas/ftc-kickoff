@@ -1,8 +1,8 @@
-import { LAYERS, RESOURCES, PATHS, KICKOFF, KICKOFF_WEEK, CHANGES, POLLEN } from './data.js';
+import { LAYERS, RESOURCES, PATHS, KICKOFF, KICKOFF_WEEK, CHANGES } from './data.js';
 import { iconImg } from './icon.js';
 import { renderAwards } from './awards.js';
 import { SLIDES } from './slides.js';
-import { ART, drill } from './art.js';
+import { ART } from './art.js';
 
 /**
  * Sunum modu.
@@ -299,7 +299,7 @@ export function createDeck({ root, onOpen, onClose }) {
       const wrap = el('div', 'chg');
       wrap.innerHTML = `
         <div class="chg__row chg__row--head" aria-hidden="true">
-          <span class="chg__c chg__c--topic">Ne değişti <small>üzerine gelince büyür · tıklayınca sabit kalır</small></span>
+          <span class="chg__c chg__c--topic">Ne değişti <small>satıra tıklayınca büyür · tekrar tıklayınca kapanır</small></span>
           <span class="chg__c chg__c--before">Önce <small>DECODE 2025–26</small></span>
           <span class="chg__c chg__c--arrow">→</span>
           <span class="chg__c chg__c--after">Şimdi <small>BIOBUZZ 2026–27</small></span>
@@ -313,18 +313,19 @@ export function createDeck({ root, onOpen, onClose }) {
           <div class="chg__c chg__c--before"><span class="chg__label">Önce · DECODE</span>${c.before}</div>
           <div class="chg__c chg__c--arrow" aria-hidden="true">→</div>
           <div class="chg__c chg__c--after"><span class="chg__label">Şimdi · BIOBUZZ</span>${c.after}${big && c.note ? `<span class="chg__note">${c.note}</span>` : ''}</div>`;
-      // büyüteç: üzerine gelinen satır büyük puntoyla tablonun üstünde açılır
+      // büyüteç: tıklanan satır büyük puntoyla tablonun üstünde açılır
       const zoom = el('div', 'chg__zoom');
       zoom.hidden = true;
       zoom.setAttribute('aria-live', 'polite');
-      let pinned = null;
-      let muted = false; // panel tıklanıp kapatıldıysa imleç ayrılana kadar yeniden açılmasın
+      let openKey = null;
       const show = (key) => {
+        openKey = key;
         zoom.innerHTML = cells(CHANGES[key], true);
         zoom.hidden = false;
         wrap.classList.add('is-zoomed');
       };
       const hide = () => {
+        openKey = null;
         zoom.hidden = true;
         wrap.classList.remove('is-zoomed');
       };
@@ -336,63 +337,15 @@ export function createDeck({ root, onOpen, onClose }) {
         row.setAttribute('role', 'button');
         row.setAttribute('aria-label', `${c.title}: büyüt`);
         row.innerHTML = cells(c);
-        row.addEventListener('mouseenter', () => {
-          if (!pinned && !muted) show(key);
-        });
-        row.addEventListener('focus', () => {
-          if (!pinned) show(key);
-        });
-        row.addEventListener('click', () => {
-          if (pinned === key) {
-            pinned = null;
-            wrap.classList.remove('is-pinned');
-            hide();
-          } else {
-            pinned = key;
-            wrap.classList.add('is-pinned');
-            show(key);
-          }
-        });
+        row.addEventListener('click', () => (openKey === key ? hide() : show(key)));
         row.addEventListener('keydown', (e) => {
           if (e.key === 'Enter') row.click();
         });
         wrap.appendChild(row);
       });
-      wrap.addEventListener('mouseleave', () => {
-        muted = false;
-        if (!pinned) hide();
-      });
-      zoom.addEventListener('click', () => {
-        pinned = null;
-        muted = true;
-        wrap.classList.remove('is-pinned');
-        hide();
-      });
+      zoom.addEventListener('click', hide);
       wrap.appendChild(zoom);
       b.appendChild(wrap);
-      const f = foot(s);
-      if (f) b.appendChild(f);
-      return b;
-    },
-    /** Pollen: ölçek çizimi, dört egzersiz, StarterBot ve Skill Builder. */
-    pollen(s) {
-      const b = el('div');
-      b.appendChild(head(s));
-      const wrap = el('div', 'pollen');
-      const scale = el('figure', 'pollen__scale');
-      scale.innerHTML = ART.pollenScale();
-      wrap.appendChild(scale);
-      const drills = el('div', 'pollen__drills');
-      for (const d of POLLEN.drills) {
-        drills.appendChild(el('div', 'drill', `<div class="drill__pic">${drill(d.kind)}</div><h3>${d.title}</h3><p>${d.line}</p>`));
-      }
-      wrap.appendChild(drills);
-      b.appendChild(wrap);
-      const row = el('div', 'pollen__row');
-      row.innerHTML = `
-        <div class="fact"><b>${POLLEN.vendors.length}</b><span><strong>StarterBot</strong> · ${POLLEN.vendors.join(', ')}. Taban = şasi + intake; kendi kitinizden kurulur.</span></div>
-        <div class="fact"><b>${POLLEN.skillBuilders}</b><span><strong>Skill Builder</strong> · Pollen ile bugünden oynanabilen mini oyunlar: hassas sürüş, intake, skor döngüsü, otonom.</span></div>`;
-      b.appendChild(row);
       const f = foot(s);
       if (f) b.appendChild(f);
       return b;

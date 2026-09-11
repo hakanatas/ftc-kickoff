@@ -64,7 +64,7 @@ export const SLIDES = [
     title: 'Manual yeniden yazıldı',
     lede: 'Aynı 18 inç küp, aynı saha mantığı; ama kuralın anlatılma biçimi değişti.',
     foot: 'Kaynak: BIOBUZZ Competition Manual ön sürüm duyurusu. Ayrıntıyı kickoff sonrası tam manual ile doğrulayın.',
-    note: 'Önce DECODE tarafını okuyun, sonra BIOBUZZ düğmesine basın; kartlar çevrilir. "Kuralın ruhu" en önemlisi: hakemle tartışırken madde numarası yerine niyet konuşulacak.',
+    note: 'Satır satır: sol eski, sağ yeni. "Kuralın ruhu" en önemlisi: hakemle konuşurken madde numarası yerine niyet konuşulacak.',
   },
   {
     kind: 'pollen',

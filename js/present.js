@@ -290,69 +290,33 @@ export function createDeck({ root, onOpen, onClose }) {
       if (f) b.appendChild(f);
       return b;
     },
-    /** Önce / şimdi: çevrilebilir değişiklik kartları. */
+    /** Önce / şimdi: satır satır karşılaştırma. Sağ sütun vurgulu. */
     changes(s) {
       const b = el('div');
       b.appendChild(head(s));
       const wrap = el('div', 'chg');
-      const tog = el('div', 'chg__toggle');
-      tog.setAttribute('role', 'group');
-      tog.setAttribute('aria-label', 'Sezon seç');
-      tog.innerHTML = `
-        <button type="button" data-side="before" aria-pressed="true">DECODE <small>2025–26</small></button>
-        <button type="button" data-side="after" aria-pressed="false">BIOBUZZ <small>2026–27</small></button>
-        <span class="chg__tip">Karta tıklayın ya da sezonu değiştirin</span>`;
-      wrap.appendChild(tog);
-      const grid = el('div', `chg__grid chg__grid--${s.items.length}`);
-      const cards = [];
+      wrap.innerHTML = `
+        <div class="chg__row chg__row--head" aria-hidden="true">
+          <span class="chg__c chg__c--topic">Ne değişti</span>
+          <span class="chg__c chg__c--before">Önce <small>DECODE 2025–26</small></span>
+          <span class="chg__c chg__c--arrow">→</span>
+          <span class="chg__c chg__c--after">Şimdi <small>BIOBUZZ 2026–27</small></span>
+        </div>`;
       s.items.forEach((key, k) => {
         const c = CHANGES[key];
-        const card = el('button', 'chg__card');
-        card.type = 'button';
-        card.style.setProperty('--i', k);
-        card.setAttribute('aria-pressed', 'false');
-        card.innerHTML = `
-          <span class="chg__inner">
-            <span class="chg__face chg__face--before">
-              <span class="chg__tag">${c.tag} · önce</span>
-              <span class="chg__title">${c.title}</span>
-              <span class="chg__text">${c.before}</span>
-              <span class="chg__who">${c.who}</span>
-            </span>
-            <span class="chg__face chg__face--after">
-              <span class="chg__tag">${c.tag} · şimdi</span>
-              <span class="chg__title">${c.title}</span>
-              <span class="chg__text">${c.after}</span>
-              ${c.note ? `<span class="chg__note">${c.note}</span>` : ''}
-              <span class="chg__who">${c.who}</span>
-            </span>
-          </span>`;
-        card.addEventListener('click', () => {
-          const on = !card.classList.contains('is-after');
-          card.classList.toggle('is-after', on);
-          card.setAttribute('aria-pressed', String(on));
-          syncToggle();
-        });
-        cards.push(card);
-        grid.appendChild(card);
+        const row = el('div', 'chg__row');
+        row.style.setProperty('--i', k);
+        row.innerHTML = `
+          <div class="chg__c chg__c--topic">
+            <span class="chg__tag">${c.tag}</span>
+            <span class="chg__title">${c.title}</span>
+            <span class="chg__who">${c.who}</span>
+          </div>
+          <div class="chg__c chg__c--before"><span class="chg__label">Önce</span>${c.before}</div>
+          <div class="chg__c chg__c--arrow" aria-hidden="true">→</div>
+          <div class="chg__c chg__c--after"><span class="chg__label">Şimdi</span>${c.after}${c.note ? `<span class="chg__note">${c.note}</span>` : ''}</div>`;
+        wrap.appendChild(row);
       });
-      wrap.appendChild(grid);
-      const btns = tog.querySelectorAll('button');
-      function syncToggle() {
-        const n = cards.filter((c) => c.classList.contains('is-after')).length;
-        btns[0].setAttribute('aria-pressed', String(n === 0));
-        btns[1].setAttribute('aria-pressed', String(n === cards.length));
-      }
-      btns.forEach((bt) =>
-        bt.addEventListener('click', () => {
-          const after = bt.dataset.side === 'after';
-          cards.forEach((c) => {
-            c.classList.toggle('is-after', after);
-            c.setAttribute('aria-pressed', String(after));
-          });
-          syncToggle();
-        })
-      );
       b.appendChild(wrap);
       const f = foot(s);
       if (f) b.appendChild(f);

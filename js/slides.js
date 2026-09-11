@@ -8,6 +8,7 @@
 export const SLIDES = [
   {
     kind: 'cover',
+    art: 'robot',
     eyebrow: 'AG Robotik · Sezon açılışı · 12 Eylül 2026',
     title: ['FTC Kaynakları ve', 'Eğitim Materyalleri'],
     lede: 'Yeni sezona başlarken neyi, nereden öğreneceğiz?',
@@ -16,6 +17,7 @@ export const SLIDES = [
   },
   {
     kind: 'facts',
+    art: 'timeline',
     kicker: 'Bugün neredeyiz',
     title: 'Sezon bugün açıldı',
     lede: 'Yani bu sunum bir kütüphane turu değil, bu haftanın yol haritası.',
@@ -122,6 +124,7 @@ export const SLIDES = [
   {
     kind: 'cards',
     names: ['Robot Wiring Guide', 'ESD Mitigation analizi', 'FTC Docs · Control System'],
+    art: 'wiring',
     kicker: 'Mekanik — elektronik',
     title: 'Elektroniğin iki resmî dokümanı',
     lede: 'Sahada en çok zaman kaybettiren iki sorunun cevabı burada yazılı.',
@@ -140,6 +143,7 @@ export const SLIDES = [
   {
     kind: 'cards',
     names: ['ReCalc · EveryCalc', 'How Gears Work', 'SDP-SI · KHK rehberleri', 'FRC Mechanism Encyclopedia'],
+    art: 'gears',
     kicker: 'Mekanik',
     title: 'Tahmin etmeyi bırakıp hesaplamak',
     lede: 'Şasi hızı, motor seçimi, kaldırma yükü. Bunların hepsinin bir hesabı var.',

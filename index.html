@@ -78,6 +78,7 @@
       <h2 class="h2 reveal" data-d="1">Sezon bugün açıldı</h2>
       <p class="lede reveal" data-d="2">Yani bu sayfa bir kütüphane turu değil, bu haftanın yol haritası.</p>
       <div class="facts" id="facts"></div>
+      <div class="art art--timeline reveal" data-d="3.6" id="art-timeline"></div>
       <p class="callout reveal" data-d="4"><b>Oyun her yıl değişir, kaynaklar değişmez.</b> BIOBUZZ'ın kuralları bu sezona özel. Ama burada öğrendiğiniz kaynak haritası, nereye bakılır, kime sorulur, hangi doküman okunur, mezun olana kadar aynı kalacak. Asıl yatırımı oraya yapın.</p>
     </div>
   </section>
@@ -125,9 +126,12 @@
     <div class="stackcards" id="stackcards"></div>
     <div class="wrap">
       <div class="quiz reveal">
-        <p class="quiz__q">Bir kural tartışmasını hangisi bitirir?</p>
-        <div class="quiz__opts" id="quiz-opts"></div>
-        <p class="quiz__why" id="quiz-why" hidden></p>
+        <div class="quiz__body">
+          <p class="quiz__q">Bir kural tartışmasını hangisi bitirir?</p>
+          <div class="quiz__opts" id="quiz-opts"></div>
+          <p class="quiz__why" id="quiz-why" hidden></p>
+        </div>
+        <div class="art quiz__art" id="art-rings"></div>
       </div>
     </div>
   </section>
@@ -185,6 +189,7 @@
         <label class="supply__label" for="weeks">Turnuvaya kalan süre <output id="weeks-out">12 hafta</output></label>
         <input type="range" id="weeks" min="1" max="20" value="12" />
         <div class="supply__verdict" id="verdict"></div>
+        <div class="art supply__art" id="art-windows"></div>
       </div>
       </div>
     </div>

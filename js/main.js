@@ -1,5 +1,6 @@
 import { LAYERS, ROLES, RESOURCES, AWARDS, TASKS, SUPPLY, PATHS, KICKOFF } from './data.js';
 import { createDeck } from './present.js';
+import { ART, windowX } from './art.js';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -332,6 +333,8 @@ function supply() {
     const row = SUPPLY.find((s) => w <= s.max);
     box.style.setProperty('--tone', tones[row.tone]);
     box.innerHTML = `<b>${row.verdict}</b><span>${row.line}</span>`;
+    const marker = $('#art-windows [data-marker]');
+    if (marker) marker.setAttribute('transform', `translate(${windowX(w)} 0)`);
   }
   range.addEventListener('input', draw);
   draw();
@@ -464,6 +467,17 @@ function paths() {
   });
 }
 
+/** Sayfadaki çizimler: zaman çizelgesi, katman halkaları, sipariş pencereleri. */
+function art() {
+  const put = (id, html) => {
+    const host = $(id);
+    if (host) host.innerHTML = html;
+  };
+  put('#art-timeline', ART.timeline());
+  put('#art-rings', ART.rings());
+  put('#art-windows', ART.windows());
+}
+
 function endLayers() {
   const host = $('#end-layers');
   Object.values(LAYERS).forEach((l) => {
@@ -483,6 +497,7 @@ const attachReveals = reveals();
 const api = atlas();
 layers((k) => api.focusLayer(k));
 awards(api);
+art();
 supply();
 week(api);
 endLayers();

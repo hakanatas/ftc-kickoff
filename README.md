@@ -22,6 +22,10 @@ tıklanır.* Bu depo o sayfa.
 | Sipariş penceresi | Turnuvaya kalan süreye göre yurt içi mi yurt dışı mı |
 | Bu hafta | Beş görev, tarayıcıda hatırlanan işaret kutuları |
 
+Çizimler (`js/art.js`) dışarıdan görsel kullanmaz: robot, zaman çizelgesi,
+katman halkaları, kontrol sistemi şeması, dişli çifti ve sipariş pencereleri
+sayfayla aynı paletten SVG olarak üretilir.
+
 ## Sunum modu
 
 Başlıktaki **Sunum modu** düğmesi ya da **P** tuşu sayfayı 22 slaytlık bir

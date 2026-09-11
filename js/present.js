@@ -1,5 +1,6 @@
 import { LAYERS, RESOURCES, PATHS, AWARDS, KICKOFF } from './data.js';
 import { SLIDES } from './slides.js';
+import { ART } from './art.js';
 
 /**
  * Sunum modu.
@@ -57,6 +58,12 @@ export function createDeck({ root, onOpen, onClose }) {
     return s.foot ? el('p', 'slide__foot', s.foot) : null;
   }
 
+  /** Slayda çizim: art.js'teki isimle. */
+  function art(name, cls = 'slide__art') {
+    const fn = ART[name];
+    return fn ? el('div', `art ${cls}`, fn()) : null;
+  }
+
   function resourceCard(r) {
     const l = LAYERS[r.layer];
     const tag = r.url ? 'a' : 'div';
@@ -80,12 +87,15 @@ export function createDeck({ root, onOpen, onClose }) {
   // --- slayt gövdeleri -----------------------------------------------------
   const builders = {
     cover(s) {
-      const b = el('div', 'slide__cover');
-      b.innerHTML = `
+      const b = el('div', `slide__cover${s.art ? ' slide__cover--art' : ''}`);
+      const text = el('div', 'slide__cover__text', `
         <p class="slide__kicker">${s.eyebrow}</p>
         <h1 class="slide__big">${s.title.join('<br />')}</h1>
         <p class="slide__lede">${s.lede}</p>
-        <p class="slide__foot">${s.foot}</p>`;
+        <p class="slide__foot">${s.foot}</p>`);
+      b.appendChild(text);
+      const a = s.art && art(s.art, 'slide__art slide__art--cover');
+      if (a) b.appendChild(a);
       return b;
     },
     closing(s) {
@@ -102,6 +112,8 @@ export function createDeck({ root, onOpen, onClose }) {
       const g = el('div', 'slide__facts');
       for (const f of KICKOFF) g.appendChild(el('div', 'fact', `<b>${f.big}</b><span>${f.label}</span>`));
       b.appendChild(g);
+      const a = s.art && art(s.art);
+      if (a) b.appendChild(a);
       if (s.callout) b.appendChild(el('p', 'slide__callout', s.callout));
       return b;
     },
@@ -177,6 +189,8 @@ export function createDeck({ root, onOpen, onClose }) {
         for (const t of s.bullets) ul.appendChild(el('li', null, t));
         b.appendChild(ul);
       }
+      const a = s.art && art(s.art);
+      if (a) b.appendChild(a);
       const n = s.names.length;
       const cols = n <= 1 ? 1 : n === 2 ? 2 : n === 3 ? 3 : n === 4 ? 2 : n <= 6 ? 3 : 4;
       const g = el('div', `slide__cards slide__cards--${cols}${n >= 5 ? ' slide__cards--tight' : ''}`);
@@ -241,7 +255,8 @@ export function createDeck({ root, onOpen, onClose }) {
       slide.style.transform = 'none';
       wrap.style.height = '';
       const h = slide.offsetHeight;
-      const avail = stage.clientHeight - 12;
+      const cs = getComputedStyle(stage);
+      const avail = stage.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - 4;
       if (h > avail + 2) {
         const k = Math.max(0.55, avail / h);
         slide.style.transformOrigin = 'top center';

@@ -157,6 +157,7 @@ export const RESOURCES = [
   {
     name: 'FTC Türkiye',
     layer: 'resmi',
+    icon: 'ftcturkiye',
     roles: ['kural', 'tedarik', 'odul'],
     kind: 'kalici',
     star: true,

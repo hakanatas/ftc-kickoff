@@ -225,15 +225,17 @@ export function createDeck({ root, onOpen, onClose }) {
     cards(s) {
       const b = el('div');
       b.appendChild(head(s));
-      if (s.bullets) {
-        const ul = el('ul', 'slide__bullets');
-        for (const t of s.bullets) ul.appendChild(el('li', null, t));
-        b.appendChild(ul);
-      }
       const a = s.art && art(s.art);
       if (a) b.appendChild(a);
       const p = photo(s.photo, b);
       if (p) b.appendChild(p);
+      // side: maddeler solda, kartlar sağda; yoksa alt alta
+      const host = s.side ? el('div', 'slide__split') : b;
+      if (s.bullets) {
+        const ul = el('ul', 'slide__bullets');
+        for (const t of s.bullets) ul.appendChild(el('li', null, t));
+        host.appendChild(ul);
+      }
       const n = s.names.length;
       const cols = n <= 1 ? 1 : n === 2 ? 2 : n === 3 ? 3 : n === 4 ? 2 : n <= 6 ? 3 : 4;
       const g = el('div', `slide__cards slide__cards--${cols}${n >= 5 ? ' slide__cards--tight' : ''}`);
@@ -241,7 +243,8 @@ export function createDeck({ root, onOpen, onClose }) {
         const r = RESOURCES.find((x) => x.name === name);
         if (r) g.appendChild(resourceCard(r));
       }
-      b.appendChild(g);
+      host.appendChild(g);
+      if (s.side) b.appendChild(host);
       const f = foot(s);
       if (f) b.appendChild(f);
       return b;

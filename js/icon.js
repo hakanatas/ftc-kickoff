@@ -1,5 +1,5 @@
 /**
- * Kaynak simgesi. assets/icons/<icon>.svg, sonra .png, sonra .webp denenir;
+ * Kaynak simgesi. assets/icons/<icon>.svg, .png, .webp, .jpg sırayla denenir;
  * hiçbiri yoksa simge kendini kaldırır ve kart simgesiz kalır.
  */
 export function iconImg(r, cls) {
@@ -8,7 +8,7 @@ export function iconImg(r, cls) {
   img.className = cls;
   img.alt = '';
   img.decoding = 'async';
-  const exts = ['svg', 'png', 'webp'];
+  const exts = ['svg', 'png', 'webp', 'jpg'];
   let k = 0;
   const tryNext = () => {
     if (k >= exts.length) {

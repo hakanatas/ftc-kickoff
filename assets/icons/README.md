@@ -2,7 +2,7 @@
 
 Bu klasöre aşağıdaki adlarla logo koyduğunuzda kartlarda program adının
 solunda görünür; kod değişikliği gerekmez. Dosya yoksa kart simgesiz kalır.
-Uzantı `.svg`, `.png` ya da `.webp` olabilir; önce `.svg` denenir.
+Uzantı `.svg`, `.png`, `.webp` ya da `.jpg` olabilir; önce `.svg` denenir.
 
 | Dosya | Kart |
 |---|---|
@@ -14,6 +14,7 @@ Uzantı `.svg`, `.png` ya da `.webp` olabilir; önce `.svg` denenir.
 | `servocity.svg` | ServoCity CAD dosyaları |
 | `blender.svg` | Blender4FTC · Fusion render rehberleri |
 | `ftcsim.svg` | FTCSim |
+| `ftcturkiye.jpg` | FTC Türkiye (Fikret Yüksel Vakfı logosu) |
 
 Logo kartın üst satırında, katman etiketinin karşısında beyaz yuvarlatılmış bir
 kutuda gösterilir; yatay yazı logoları da kare simgeler de olur. Şeffaf ya da

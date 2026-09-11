@@ -327,6 +327,8 @@ body.is-present { overflow: hidden; }
 .slide__foot { margin: 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: clamp(16px, 1.5vw, 25px); color: var(--gold-soft); max-width: 92ch; }
 .slide__bullets { margin: 0; padding-left: 24px; display: grid; gap: 10px; font-size: clamp(18px, 1.75vw, 28px); color: var(--paper-dim); }
 .slide__bullets li::marker { color: var(--gold); }
+.slide__split { display: grid; grid-template-columns: 1.25fr 1fr; gap: 20px; align-items: start; }
+.slide__split .slide__bullets { padding-top: 6px; }
 .slide__cover { display: grid; gap: 18px; justify-items: start; }
 .slide__big { margin: 0; font-family: var(--serif); font-variation-settings: 'SOFT' 30, 'WONK' 1, 'opsz' 144; font-weight: 600; font-size: clamp(44px, 7.8vw, 128px); line-height: 0.98; letter-spacing: -0.04em; }
 .slide__big--quote em, .slide__big--quote { font-weight: 500; }
@@ -494,7 +496,7 @@ body.is-present { overflow: hidden; }
 
 @media (max-width: 900px) {
   .slide__facts, .slide__two, .slide__layers, .slide__paths, .slide__cards--2, .slide__cards--3 { grid-template-columns: 1fr; }
-  .dates, .pollen, .pollen__row { grid-template-columns: 1fr; }
+  .dates, .pollen, .pollen__row, .slide__split { grid-template-columns: 1fr; }
   .chg__row { grid-template-columns: 1fr; gap: 6px; }
   .chg__row--head, .chg__c--arrow { display: none; }
   .chg__zoom { grid-template-columns: 1fr; position: fixed; inset: 8px; overflow: auto; align-content: start; }

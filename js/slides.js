@@ -86,6 +86,8 @@ export const SLIDES = [
   {
     kind: 'cards',
     names: ['FTC Türkiye'],
+    photo: { file: 'yerel', alt: 'Türkiye turnuvasında hakemler skor masasında', pos: 'center 40%' },
+    side: true,
     kicker: 'Katman 1 — yerel',
     title: 'Türkçe giriş katmanı',
     lede: 'İngilizce kaynak yığınına dalmadan önce buradan başlamak işi kolaylaştırır.',

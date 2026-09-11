@@ -333,4 +333,95 @@ export function gears() {
 /** Sipariş çizelgesinde kalan haftayı x konumuna çevirir (viewBox birimi). */
 export const windowX = (remaining) => 70 + ((890 - 70) * (12 - Math.min(12, Math.max(0, remaining)))) / 12;
 
-export const ART = { robot, timeline, rings, wiring, gears, windows: () => timeline({ zones: true }) };
+// ---------------------------------------------------------------------------
+// Pollen: 18 inç robot kübü yanında ölçekli top; Game Preview egzersizleri.
+// ---------------------------------------------------------------------------
+function pollenBall(cx, cy, r) {
+  let b = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${C.gold}" />
+    <circle cx="${cx - r * 0.3}" cy="${cy - r * 0.3}" r="${r * 0.45}" fill="${C.goldSoft}" fill-opacity="0.35" />`;
+  for (let k = 0; k < 5; k++) {
+    const a = (k / 5) * Math.PI * 2 - 0.6;
+    b += `<circle cx="${(cx + Math.cos(a) * r * 0.55).toFixed(1)}" cy="${(cy + Math.sin(a) * r * 0.55).toFixed(1)}" r="${(r * 0.16).toFixed(1)}" fill="${C.deep}" fill-opacity="0.5" />`;
+  }
+  return b;
+}
+
+export function pollenScale() {
+  const W = 520;
+  const H = 320;
+  const cube = 230; // 18 in
+  const x0 = 60;
+  const y0 = 40;
+  const ballD = (cube * 2.8) / 18; // ~36 px
+  const r = ballD / 2;
+  let body = '';
+  // zemin çizgisi
+  body += `<line x1="20" y1="${y0 + cube}" x2="${W - 20}" y2="${y0 + cube}" stroke="${C.paper}" stroke-opacity="0.25" stroke-width="1.5" />`;
+  // küp: ön yüz + hafif derinlik
+  const d = 26;
+  body += `<path d="M${x0} ${y0 + d} l${d} -${d} h${cube} l-${d} ${d} z" fill="${C.sage}" fill-opacity="0.12" stroke="${C.sage}" stroke-opacity="0.6" stroke-width="1.4" />
+    <path d="M${x0 + cube} ${y0 + d} l${d} -${d} v${cube} l-${d} ${d} z" fill="${C.sage}" fill-opacity="0.08" stroke="${C.sage}" stroke-opacity="0.6" stroke-width="1.4" />
+    <rect x="${x0}" y="${y0 + d}" width="${cube}" height="${cube - d}" fill="${C.deep}" stroke="${C.sage}" stroke-width="1.8" />`;
+  // küp içi: ölçü oku
+  body += `<line x1="${x0 + 18}" y1="${y0 + d + 18}" x2="${x0 + 18}" y2="${y0 + cube - 18}" stroke="${C.paper}" stroke-opacity="0.35" stroke-width="1" />
+    <path d="M${x0 + 14} ${y0 + d + 22} l4 -6 l4 6" fill="none" stroke="${C.paper}" stroke-opacity="0.5" />
+    <path d="M${x0 + 14} ${y0 + cube - 22} l4 6 l4 -6" fill="none" stroke="${C.paper}" stroke-opacity="0.5" />
+    <text x="${x0+ cube / 2 + 8}" y="${y0 + cube / 2 + 4}" text-anchor="middle" fill="${C.paper}" font-size="30" font-weight="500" style="${SERIF}">18 in</text>
+    <text x="${x0 + cube / 2 + 8}" y="${y0 + cube / 2 + 30}" text-anchor="middle" fill="${C.dim}" font-size="13" letter-spacing="1.5" style="${SANS}">ROBOT KÜBÜ · 45,7 cm</text>`;
+  // top: zeminde, kübün sağında
+  const bx = x0 + cube + d + 70;
+  const by = y0 + cube - r;
+  body += pollenBall(bx, by, r);
+  body += `<text x="${bx}" y="${by - r - 14}" text-anchor="middle" fill="${C.paper}" font-size="22" font-weight="500" style="${SERIF}">2.8 in</text>
+    <text x="${bx}" y="${by + r + 24}" text-anchor="middle" fill="${C.dim}" font-size="12.5" letter-spacing="1.2" style="${SANS}">POLLEN · 7,1 cm · 25 g</text>`;
+  // kaç top sığar? kübün genişliğine ~6 top
+  const n = Math.floor(cube / ballD);
+  body += `<text x="${x0 + cube / 2 + 8}" y="${H - 6}" text-anchor="middle" fill="${C.gold}" font-size="13" letter-spacing="1.2" style="${SANS}">BİR KENARA YAN YANA ${n} POLLEN SIĞAR</text>`;
+  return svg(W, H, body, 'Ölçek karşılaştırması: 18 inç robot kübü yanında 2.8 inç Pollen topu');
+}
+
+/** Game Preview egzersizleri için küçük piktogramlar. */
+export function drill(kind) {
+  const W = 200;
+  const H = 110;
+  const r = 9;
+  let body = '';
+  const robot = (x, y) => `<rect x="${x}" y="${y}" width="46" height="34" rx="6" fill="${C.sage}" fill-opacity="0.18" stroke="${C.sage}" stroke-width="1.6" />
+    <rect x="${x + 40}" y="${y + 6}" width="12" height="22" rx="3" fill="${C.sage}" fill-opacity="0.5" />`;
+  if (kind === 'line') {
+    body += robot(14, 40);
+    for (let k = 0; k < 6; k++) body += pollenBall(84 + k * 20, 57, r);
+    body += `<path d="M60 30 h20 l-6 -6 m6 6 l-6 6" fill="none" stroke="${C.gold}" stroke-width="1.6" />`;
+  } else if (kind === 'pile') {
+    body += robot(14, 40);
+    const cx = 130;
+    const cy = 57;
+    body += pollenBall(cx, cy, r);
+    for (let k = 0; k < 6; k++) {
+      const a = (k / 6) * Math.PI * 2;
+      body += pollenBall(cx + Math.cos(a) * r * 2.05, cy + Math.sin(a) * r * 2.05, r);
+    }
+    body += `<path d="M60 30 h30 l-6 -6 m6 6 l-6 6" fill="none" stroke="${C.gold}" stroke-width="1.6" />`;
+  } else if (kind === 'corner') {
+    body += `<path d="M120 12 v86 h70" fill="none" stroke="${C.paper}" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round" />
+      <rect x="124" y="12" width="66" height="82" fill="${C.paper}" fill-opacity="0.04" />`;
+    body += pollenBall(120 + r + 3, 98 - r - 3, r);
+    body += pollenBall(120 + r * 3 + 5, 98 - r - 3, r);
+    body += pollenBall(120 + r + 3, 98 - r * 3 - 5, r);
+    body += pollenBall(120 + r * 5 + 8, 98 - r - 3, r);
+    body += robot(30, 52);
+    body += `<path d="M84 44 q20 -24 40 -6" fill="none" stroke="${C.gold}" stroke-width="1.6" stroke-dasharray="4 3" />`;
+  } else {
+    // otonom: iki nokta arası kesik yol
+    body += `<circle cx="30" cy="80" r="6" fill="${C.deep}" stroke="${C.sky}" stroke-width="2" />
+      <circle cx="170" cy="30" r="6" fill="${C.deep}" stroke="${C.sky}" stroke-width="2" />
+      <path d="M36 76 C 70 60, 90 20, 164 32" fill="none" stroke="${C.sky}" stroke-width="1.8" stroke-dasharray="5 4" />`;
+    body += pollenBall(96, 44, r);
+    body += pollenBall(128, 34, r);
+    body += `<text x="30" y="100" text-anchor="middle" fill="${C.dim}" font-size="10" letter-spacing="1" style="${SANS}">A</text>
+      <text x="170" y="16" text-anchor="middle" fill="${C.dim}" font-size="10" letter-spacing="1" style="${SANS}">B</text>`;
+  }
+  return svg(W, H, body, 'Egzersiz çizimi');
+}
+
+export const ART = { robot, timeline, rings, wiring, gears, windows: () => timeline({ zones: true }), pollenScale };

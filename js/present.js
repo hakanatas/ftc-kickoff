@@ -1,9 +1,8 @@
-import { LAYERS, RESOURCES, PATHS, KICKOFF, KICKOFF_WEEK, CHANGES } from './data.js';
+import { LAYERS, RESOURCES, PATHS, KICKOFF, KICKOFF_WEEK, CHANGES, POLLEN } from './data.js';
 import { iconImg } from './icon.js';
 import { renderAwards } from './awards.js';
-import { pollenField } from './pollen.js';
 import { SLIDES } from './slides.js';
-import { ART } from './art.js';
+import { ART, drill } from './art.js';
 
 /**
  * Sunum modu.
@@ -322,13 +321,25 @@ export function createDeck({ root, onOpen, onClose }) {
       if (f) b.appendChild(f);
       return b;
     },
-    /** Pollen sahası: canlı fizik oyuncağı. */
+    /** Pollen: ölçek çizimi, dört egzersiz, StarterBot ve Skill Builder. */
     pollen(s) {
       const b = el('div');
       b.appendChild(head(s));
-      const sim = pollenField({ reduced });
-      b.appendChild(sim.el);
-      onLeave(() => sim.destroy());
+      const wrap = el('div', 'pollen');
+      const scale = el('figure', 'pollen__scale');
+      scale.innerHTML = ART.pollenScale();
+      wrap.appendChild(scale);
+      const drills = el('div', 'pollen__drills');
+      for (const d of POLLEN.drills) {
+        drills.appendChild(el('div', 'drill', `<div class="drill__pic">${drill(d.kind)}</div><h3>${d.title}</h3><p>${d.line}</p>`));
+      }
+      wrap.appendChild(drills);
+      b.appendChild(wrap);
+      const row = el('div', 'pollen__row');
+      row.innerHTML = `
+        <div class="fact"><b>${POLLEN.vendors.length}</b><span><strong>StarterBot</strong> · ${POLLEN.vendors.join(', ')}. Taban = şasi + intake; kendi kitinizden kurulur.</span></div>
+        <div class="fact"><b>${POLLEN.skillBuilders}</b><span><strong>Skill Builder</strong> · Pollen ile bugünden oynanabilen mini oyunlar: hassas sürüş, intake, skor döngüsü, otonom.</span></div>`;
+      b.appendChild(row);
       const f = foot(s);
       if (f) b.appendChild(f);
       return b;
@@ -483,7 +494,7 @@ export function createDeck({ root, onOpen, onClose }) {
 
   // boş alana tıklayınca ilerle; düğme, link, kart ve form öğeleri hariç
   stage.addEventListener('click', (e) => {
-    if (e.target.closest('a, button, input, label, select, textarea, .card, .scard, .quiz, .tasks, .supply__box, .pollen, .chg, .awards')) return;
+    if (e.target.closest('a, button, input, label, select, textarea, .card, .scard, .quiz, .tasks, .supply__box, .chg, .awards')) return;
     const r = stage.getBoundingClientRect();
     go(e.clientX - r.left < r.width * 0.25 ? i - 1 : i + 1);
   });
@@ -496,7 +507,7 @@ export function createDeck({ root, onOpen, onClose }) {
     sy = e.clientY;
   });
   stage.addEventListener('pointerup', (e) => {
-    if (e.target.closest('.pollen, input')) return;
+    if (e.target.closest('input')) return;
     const dx = e.clientX - sx;
     const dy = e.clientY - sy;
     if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.6) go(dx < 0 ? i + 1 : i - 1);

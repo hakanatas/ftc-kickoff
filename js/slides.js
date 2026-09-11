@@ -69,10 +69,10 @@ export const SLIDES = [
   {
     kind: 'pollen',
     kicker: 'Oyun ön izlemesi',
-    title: 'Pollen kenara yuvarlanır',
-    lede: 'Game Preview\'un tek uyarısı bu: toplar saha kenarına ve köşeye gider. Intake oradan alabilmeli.',
-    foot: 'Ölçekli değil. Gerçek Pollen sahanın yüzde ikisi kadar; burada görünsün diye büyük çizildi.',
-    note: 'İmleçle topları köşeye itin, sayaç değişsin. Sonra sorun: köşedeki topu hangi intake alır? Sıra ve Yığın düzenleri Game Preview\'daki iki egzersiz.',
+    title: 'Skor elemanı: Pollen',
+    lede: 'Oyun bu akşam açıklanacak; ama topu ve dört egzersizi FIRST temmuzda paylaştı. Intake tasarımına bugün başlanabilir.',
+    foot: 'Kaynak: Game Preview 2027. Sol çizim ölçekli: küp ve top aynı oranda.',
+    note: 'Sol: top robota göre küçük, yani intake tek tek değil toplu almalı. Sağ: Game Preview\'un dört egzersizi; köşe olanı en zor, çoğu takım sezon ortasında fark eder.',
   },
   {
     kind: 'cards',

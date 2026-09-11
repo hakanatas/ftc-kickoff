@@ -701,6 +701,12 @@ export const POLLEN = {
   weightG: 25,
   vendors: ['AndyMark', 'goBILDA', 'REV Robotics', 'Studica'],
   skillBuilders: 7,
+  drills: [
+    { kind: 'line', title: 'Sıra', line: 'Yan yana dizili Pollen. Intake aynı anda birden fazlasını alabiliyor mu?' },
+    { kind: 'pile', title: 'Yığın', line: 'Üst üste, iç içe toplar. Alırken yığını dağıtmadan almak.' },
+    { kind: 'corner', title: 'Kenar ve köşe', line: 'Toplar saha kenarına ve köşeye yuvarlanır. Intake oradan alabilmeli.' },
+    { kind: 'auto', title: 'Otonom', line: 'Bilinen iki nokta arasında gidip Pollen almak; insan müdahalesi yok.' },
+  ],
 };
 
 /** Bu haftanın görevleri — slayt 24. */

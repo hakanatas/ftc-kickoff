@@ -432,22 +432,21 @@ body.is-present { overflow: hidden; }
 @keyframes chgin { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .chg__row:not(.chg__row--head) { animation: none; } }
 
-/* ---- pollen sahası ------------------------------------------------------- */
-.pollen { display: grid; grid-template-columns: minmax(240px, 46vh) 1fr; gap: 20px; align-items: start; }
-.pollen__stage { position: relative; aspect-ratio: 1; width: 100%; max-height: 52vh; }
-.pollen__canvas { display: block; border-radius: 14px; background: #10301f; cursor: crosshair; touch-action: none; }
-.pollen__hint { position: absolute; left: 10px; bottom: 10px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage-dim); pointer-events: none; }
-.pollen__side { display: grid; gap: 14px; align-content: start; }
-.pollen__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.pstat { padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--glass); display: grid; }
-.pstat b { font-family: var(--serif); font-size: clamp(30px, 3.4vw, 52px); font-weight: 500; line-height: 1; color: var(--gold); font-variant-numeric: tabular-nums; }
-.pstat span { font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-dim); margin-top: 4px; }
-.pollen__btns { display: flex; gap: 8px; flex-wrap: wrap; }
-.pollen__btns button { border: 1px solid var(--line); background: var(--glass); color: var(--paper); border-radius: 999px; padding: 9px 18px; font: inherit; font-size: clamp(14px, 1.2vw, 18px); font-weight: 600; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
-.pollen__btns button:hover { border-color: var(--gold); background: rgba(224, 149, 47, 0.12); }
-.pollen__facts { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
-.pollen__facts li { padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); font-size: clamp(14px, 1.2vw, 19px); color: var(--paper-dim); }
-.pollen__facts b { color: var(--paper); font-family: var(--serif); font-weight: 500; font-size: 1.15em; margin-right: 4px; }
+/* ---- pollen: ölçek ve egzersizler ---------------------------------------- */
+.pollen { display: grid; grid-template-columns: minmax(280px, 1.05fr) 1.4fr; gap: 18px; align-items: stretch; }
+.pollen__scale { margin: 0; padding: 12px 14px 8px; border-radius: 18px; border: 1px solid var(--line); background: var(--glass); display: grid; align-content: center; }
+.pollen__scale svg { width: 100%; height: auto; max-height: 40vh; }
+.pollen__drills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.drill { display: grid; grid-template-rows: auto auto 1fr; gap: 4px; padding: 12px 14px 12px; border-radius: 16px; border: 1px solid var(--line); background: var(--glass); }
+.drill__pic { border-radius: 10px; background: rgba(237, 243, 239, 0.04); }
+.drill__pic svg { width: 100%; height: auto; max-height: 13vh; display: block; }
+.drill h3 { margin: 4px 0 0; font-family: var(--serif); font-size: clamp(18px, 1.7vw, 26px); font-weight: 500; letter-spacing: -0.02em; }
+.drill p { margin: 0; font-size: clamp(13.5px, 1.15vw, 17.5px); color: var(--paper-dim); line-height: 1.35; }
+.pollen__row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.pollen__row .fact { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 16px; padding: 14px 20px; }
+.pollen__row .fact b { margin: 0; font-size: clamp(34px, 3.6vw, 56px); }
+.pollen__row .fact span { font-size: clamp(14px, 1.2vw, 18px); }
+.pollen__row .fact strong { color: var(--paper); font-weight: 600; }
 
 /* taşınan canlı bloklar sunumda biraz daralsın */
 .slide__adopt .search input { padding-top: 16px; padding-bottom: 16px; }
@@ -478,7 +477,7 @@ body.is-present { overflow: hidden; }
 
 @media (max-width: 900px) {
   .slide__facts, .slide__two, .slide__layers, .slide__paths, .slide__cards--2, .slide__cards--3 { grid-template-columns: 1fr; }
-  .dates, .pollen { grid-template-columns: 1fr; }
+  .dates, .pollen, .pollen__row { grid-template-columns: 1fr; }
   .chg__row { grid-template-columns: 1fr; gap: 6px; }
   .chg__row--head, .chg__c--arrow { display: none; }
   .chg__label { display: block; }

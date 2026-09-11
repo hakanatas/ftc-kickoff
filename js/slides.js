@@ -11,7 +11,7 @@ export const SLIDES = [
     eyebrow: 'AG Robotik · Sezon açılışı · 12 Eylül 2026',
     title: ['FTC Kaynakları ve', 'Eğitim Materyalleri'],
     lede: 'Yeni sezona başlarken neyi, nereden öğreneceğiz?',
-    foot: 'BIOBUZZ · 2026–2027 FIRST® CANOPY sezonu · Hakan Ataş · ALKEV Okulları',
+    foot: 'BIOBUZZ · 2026–2027 FIRST® CANOPY sezonu · Hakan Ataş · Lal Su Narinç · ALKEV Okulları',
     note: 'Açılış. Bugün sezonun açıldığı gün. Sunumun amacı oyunu anlatmak değil, bu sezon boyunca hangi kaynaklara nasıl ulaşacağımızı öğretmek.',
   },
   {

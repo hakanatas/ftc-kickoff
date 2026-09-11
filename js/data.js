@@ -548,7 +548,7 @@ export const RESOURCES = [
 export const KICKOFF = [
   { big: '12 Eyl', label: 'Oyun tanıtımı ve Competition Manual yayını' },
   { big: '19.00', label: 'Türkiye saatiyle kickoff yayın saati' },
-  { big: '~6 ay', label: 'Turnuvalara kadar elimizdeki süre' },
+  { big: '12 hafta', label: 'Aralık ilk haftasındaki ilk turnuvaya kalan süre' },
 ];
 
 /** Yazılımın üç yolu — slayt 9. */

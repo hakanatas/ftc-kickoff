@@ -123,7 +123,7 @@ function stickyNav() {
 // Marquee
 // ---------------------------------------------------------------------------
 function marquee() {
-  const items = ['3 katman', `${RESOURCES.length} kaynak`, '5 yapı sistemi', '9 ödül', '~6 ay', 'soru sormak yöntemdir', 'oyun değişir, kaynaklar değişmez'];
+  const items = ['3 katman', `${RESOURCES.length} kaynak`, '5 yapı sistemi', '9 ödül', '12 hafta', 'soru sormak yöntemdir', 'oyun değişir, kaynaklar değişmez'];
   const one = items.map((i) => `${i}<i>◆</i>`).join('');
   $('#marquee').innerHTML = `<span>${one}</span><span>${one}</span>`;
 }

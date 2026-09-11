@@ -168,7 +168,7 @@ export const SLIDES = [
     kicker: 'Katman 3 — video',
     title: 'İzleyerek öğrenilen kısım',
     lede: 'Bir mekanizmayı anlatan üç paragraf yerine, çalışırken gösteren otuz saniye.',
-    foot: 'Bulduğunuz iyi videoyu takım Discord kanalına düşün. Altı ay sonra kimse "şu videoyu bir yerde görmüştüm" demek zorunda kalmasın.',
+    foot: 'Bulduğunuz iyi videoyu takım Discord kanalına düşün. Üç ay sonra kimse "şu videoyu bir yerde görmüştüm" demek zorunda kalmasın.',
     note: 'Video kaynakları yeni öğrencinin en hızlı öğrendiği format.',
   },
   {

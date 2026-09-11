@@ -190,7 +190,7 @@ export const SLIDES = [
   {
     kind: 'awards',
     kicker: 'Ödüller ve jüri',
-    title: 'Şampiyonluk maçtan geçmiyor',
+    title: 'Sahada üç kişi, jüride bütün takım',
     lede: "FTC'de bir üst seviyeye ilerlemenin ana yolu Inspire Award. Ve her ödül bir role denk geliyor.",
     foot: "Reach ve Sustain eski Motivate'in ikiye bölünmüş hâli. Promote ve Compass'ın bu sezonki durumu için tam manual'a bakın; müsabakadan Winning ve Finalist Alliance.",
     note: 'Yeni öğrencilerin en çok şaşırdığı bilgi. Erken ve net söylenmeli. Bu slayt robot dışı rolleri meşrulaştırıyor.',
@@ -232,9 +232,9 @@ export const SLIDES = [
   {
     kind: 'closing',
     photo: { file: 'takim', alt: 'Takım fotoğrafı', bg: true },
-    title: ['İyi takımlar iyi', 'robot yapmaz —', 'iyi öğrenir.'],
-    lede: 'Bu sezon elimizdeki en büyük avantaj, sorunun cevabının nerede olduğunu bilmek. Gerisi çalışmak.',
-    foot: 'AG Robotik · ALKEV Okulları · BIOBUZZ 2026–2027',
-    note: 'Kapanış. Sorulara geçin.',
+    title: ['Robot sezonluk,', 'öğrendikleriniz', 'kalıcı.'],
+    lede: 'Aralıkta bu robot rafa kalkacak; nerede ne öğreneceğinizi bilmek mezun olana kadar sizinle. Bildiğinizi paylaşın, bilmediğinizi sorun.',
+    foot: 'More than robots · AG Robotik · ALKEV Okulları · BIOBUZZ 2026–2027',
+    note: 'Kapanış. Duvardaki yazı FIRST\'ın kendi sözü: More than robots. Son cümle Gracious Professionalism\'in kısa hâli. Sorulara geçin.',
   },
 ];

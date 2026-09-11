@@ -70,7 +70,7 @@ export const RESOURCES = [
     layer: 'resmi',
     roles: ['kural', 'odul'],
     kind: 'sezonluk',
-    desc: 'Turnuva sonuçları, skorlar, sıralamalar. Rakip analizinin başlangıç noktası.',
+    desc: 'Turnuva sonuçları, skorlar, sıralamalar. Scouting ve ittifak ortağı seçiminin başlangıç noktası.',
     url: 'https://ftc-events.firstinspires.org',
   },
   {
@@ -454,7 +454,7 @@ export const RESOURCES = [
     layer: 'canli',
     roles: ['video', 'mekanik'],
     kind: 'sezonluk',
-    desc: 'Rakip ve örnek tasarımları görmenin en hızlı yolu. Sezon ortasında düzenli tarayın.',
+    desc: 'Diğer takımların tasarımlarını görmenin en hızlı yolu. Sezon ortasında düzenli tarayın.',
     url: '',
   },
 

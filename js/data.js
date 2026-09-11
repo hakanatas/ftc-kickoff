@@ -199,6 +199,15 @@ export const RESOURCES = [
     url: 'https://www.ctrlaltftc.com',
   },
   {
+    name: 'FTCSim',
+    layer: 'dokuman',
+    roles: ['yazilim'],
+    kind: 'kalici',
+    star: true,
+    desc: "FIRST Kanada'nın tarayıcı simülatörü. Blocks ya da OnBot Java ile sanal robotu sürersiniz. Robot elinizde yokken kod öğrenmenin en kısa yolu.",
+    url: 'https://ftcsim.org',
+  },
+  {
     name: 'Learn Java for FTC',
     layer: 'dokuman',
     roles: ['yazilim'],

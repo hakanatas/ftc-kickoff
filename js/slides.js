@@ -157,7 +157,7 @@ export const SLIDES = [
   },
   {
     kind: 'cards',
-    names: ['ReCalc · EveryCalc', 'How Gears Work', 'SDP-SI · KHK rehberleri', 'FRC Mechanism Encyclopedia'],
+    names: ['ReCalc', 'How Gears Work', 'SDP-SI · KHK rehberleri', 'FRC Mechanism Encyclopedia'],
     art: 'gears',
     kicker: 'Mekanik',
     title: 'Tahmin etmeyi bırakıp hesaplamak',

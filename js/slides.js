@@ -69,6 +69,7 @@ export const SLIDES = [
   {
     kind: 'cards',
     names: ['FTC Docs', 'FTC Docs · Control System', 'FTC Docs · SDK', 'FTC Docs · Vision'],
+    photo: { file: 'yazilim', alt: 'Yazılım ekibi masada robotla çalışıyor', short: true },
     kicker: 'Katman 1 — resmî FIRST',
     title: 'FTC Docs: teknik tarafın resmî evi',
     lede: 'Çoğu yeni takımın hiç açmadan sezona girdiği kaynak.',
@@ -103,6 +104,7 @@ export const SLIDES = [
   },
   {
     kind: 'paths',
+    photo: { file: 'kod', alt: 'Android Studio açık bir laptop ve Driver Station telefonu', pos: 'center 35%', short: true },
     kicker: 'Yazılım',
     title: 'Üç programlama yolu, tek yolculuk',
     lede: 'Hepsi aynı robotu sürer. Fark, ne kadar kontrol istediğinizde.',
@@ -168,6 +170,7 @@ export const SLIDES = [
   {
     kind: 'changes',
     items: ['interview', 'portfolio', 'awards'],
+    photo: { file: 'juri', alt: 'Jüri, takımın robotunu masada incelerken not alıyor', pos: 'center 62%', short: true },
     kicker: 'Bu sezon ne değişti · 2',
     title: 'Jüri odası da değişti',
     lede: 'Görüşmenin adı, portfolyonun yeri ve ödül tablosu. Ödül ekibini en çok ilgilendiren üç kart.',

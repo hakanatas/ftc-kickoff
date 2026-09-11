@@ -77,6 +77,7 @@ export function createDeck({ root, onOpen, onClose }) {
     img.decoding = 'async';
     if (spec.pos) img.style.objectPosition = spec.pos;
     if (spec.fit === 'contain') fig.classList.add('slide__photo--contain');
+    if (spec.short) fig.classList.add('slide__photo--short');
     img.addEventListener('load', () => {
       slide.classList.add('has-photo');
       refit();
@@ -222,6 +223,8 @@ export function createDeck({ root, onOpen, onClose }) {
     paths(s) {
       const b = el('div');
       b.appendChild(head(s));
+      const p = photo(s.photo, b);
+      if (p) b.appendChild(p);
       const g = el('div', 'slide__paths');
       for (const p of PATHS) {
         g.appendChild(el('div', 'spath', `<span class="spath__no">${p.no}</span><h3>${p.name}</h3><p>${p.line}</p><span class="spath__when">${p.when}</span>`));
@@ -318,6 +321,8 @@ export function createDeck({ root, onOpen, onClose }) {
     changes(s) {
       const b = el('div');
       b.appendChild(head(s));
+      const p = photo(s.photo, b);
+      if (p) b.appendChild(p);
       const wrap = el('div', 'chg');
       wrap.innerHTML = `
         <div class="chg__row chg__row--head" aria-hidden="true">

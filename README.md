@@ -17,7 +17,7 @@ tıklanır.* Bu depo o sayfa.
 | İki tür kaynak | Sezonluk ve kalıcı ayrımı |
 | Üç katman | Resmî FIRST, topluluk dokümanı, canlı topluluk; hangisinin kural gücü var |
 | Üç programlama yolu | Blocks, OnBot Java, Android Studio |
-| Atlas | 59 kaynak; anlık arama, katman ve rol filtreleri, gerçek linkler |
+| Atlas | 63 kaynak; anlık arama, katman ve rol filtreleri, hepsi tıklanabilir |
 | Ödüller | Inspire ve diğerleri; her ödül bir role bağlı, karta basınca atlas o role daralır |
 | Sipariş penceresi | Turnuvaya kalan süreye göre yurt içi mi yurt dışı mı |
 | Bu hafta | Beş görev, tarayıcıda hatırlanan işaret kutuları |
@@ -26,8 +26,9 @@ Fotoğraflar `assets/photos/` klasöründen gelir; hangi dosya adının hangi
 slayta düştüğü oradaki README'de yazılı. Dosya yoksa yerinde çizim kalır.
 
 Çizimler (`js/art.js`) dışarıdan görsel kullanmaz: robot, zaman çizelgesi,
-katman halkaları, kontrol sistemi şeması, dişli çifti ve sipariş pencereleri
-sayfayla aynı paletten SVG olarak üretilir.
+katman halkaları, dişli çifti ve sipariş pencereleri sayfayla aynı paletten
+SVG olarak üretilir. Kart logoları `assets/icons/` klasöründen gelir; ayrıntı
+oradaki README'de.
 
 ## Sunum modu
 
@@ -90,25 +91,21 @@ güncellenebilir.
   eylül değişir, `kalici` olanlar yıllarca durur.
 - `KICKOFF` — açılış günü bilgileri.
 - `PATHS` — programlama yolları.
-- `AWARDS` — ödüller ve karşılık geldikleri roller.
+- `AWARDS` ve `AWARD_GROUPS` — ödüller, grupları ve karşılık geldikleri roller.
+- `CHANGES` — bu sezon ne değişti kartları (iki slayt).
+- `KICKOFF_WEEK` — kickoff haftası takvimi; slayt bugüne göre hesaplar.
 - `TASKS` — haftanın görevleri.
 - `SUPPLY` — sipariş penceresi eşikleri.
 
 Sunumun slayt sırası ve konuşmacı notları `js/slides.js` içinde.
 
-### Adres bekleyen kaynaklar
+### Kaynak adresleri
 
-Sunumda adresi yazılı olmayan kaynaklara link uydurulmadı; onlar sayfada
-**adres bekliyor** rozetiyle görünüyor. `js/data.js` içindeki boş `url`
-alanına adresi yazdığınız anda kart tıklanabilir hâle gelir.
-
-Şu an bekleyenler: Robot Wiring Guide, ESD Mitigation analizi, Learn Java
-for FTC, REV Introduction to Programming, FTCLib/SolversLib, Road Runner,
-Pedro Pathing, NextFTC, VisionPortal/EasyOpenCV, FTC Dashboard/Panels,
-ReCalc/EveryCalc, SDP-SI ve KHK rehberleri, FRC Mechanism Encyclopedia,
-2901 Purple Gears kütüphanesi, Blender4FTC rehberleri, FTC Discord, FTC
-Scout, altı video kanalı, PTC Creo, SolidWorks, NFR Products, Robopiece,
-Wattos Otomasyon.
+Her kaynağın `url` alanı dolu; hepsi arama motorundan doğrulandı. Yeni bir
+kaynak eklerken `url` boş bırakılırsa kart **adres bekliyor** rozetiyle
+görünür ve tıklanmaz; adresi yazdığınız anda tıklanabilir olur. Başka bir
+sayfası olmayan tek kayıt "Robot reveal videoları": adresi hazır bir
+YouTube araması.
 
 ## Yapı
 
@@ -119,7 +116,12 @@ js/data.js        bütün içerik
 js/slides.js      sunum sırası ve konuşmacı notları
 js/main.js        sayfa davranışı: petek, arama, filtreler, görevler
 js/present.js     sunum modu
+js/art.js         SVG çizimler
+js/awards.js      ödül haritası (sayfa ve sunum ortak)
+js/icon.js        kart logosu yükleyici
 assets/fonts/     Fraunces ve Instrument Sans (SIL Open Font License)
+assets/photos/    fotoğraflar (adlar oradaki README'de)
+assets/icons/     kart logoları (adlar oradaki README'de)
 serve.mjs         yerel sunucu
 ```
 

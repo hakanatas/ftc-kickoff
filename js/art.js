@@ -225,60 +225,6 @@ export function rings() {
 }
 
 // ---------------------------------------------------------------------------
-// Kontrol sistemi: batarya, şalter, Control Hub, Expansion Hub, çevre birimleri.
-// ---------------------------------------------------------------------------
-export function wiring() {
-  const box = (x, y, w, h, title, sub, col = C.paper, strong = false) => `
-    <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${strong ? col : C.deep}" fill-opacity="${strong ? 0.14 : 1}" stroke="${col}" stroke-width="${strong ? 2 : 1.5}" />
-    <text x="${x + w / 2}" y="${y + (sub ? h / 2 - 4 : h / 2 + 6)}" text-anchor="middle" fill="${C.paper}" font-size="${strong ? 19 : 15}" font-weight="500" style="${SERIF}">${title}</text>
-    ${sub ? `<text x="${x + w / 2}" y="${y + h / 2 + 16}" text-anchor="middle" fill="${C.dim}" font-size="11.5" style="${SANS}">${sub}</text>` : ''}`;
-  const label = (x, y, t, col = C.dim, anchor = 'middle') => `<text x="${x}" y="${y}" text-anchor="${anchor}" fill="${col}" font-size="11.5" letter-spacing="1.2" style="${SANS}">${t}</text>`;
-  const wire = (d, col, w = 2, dash = '') => `<path d="${d}" fill="none" stroke="${col}" stroke-width="${w}" ${dash ? `stroke-dasharray="${dash}"` : ''} stroke-linecap="round" />`;
-
-  const m = (x, y) => `<circle cx="${x}" cy="${y}" r="15" fill="${C.deep}" stroke="${C.paper}" stroke-width="1.5" /><text x="${x}" y="${y + 5}" text-anchor="middle" fill="${C.paper}" font-size="12" font-weight="600" style="${SANS}">M</text>`;
-  const sv = (x, y) => `<rect x="${x - 12}" y="${y - 12}" width="24" height="24" rx="5" fill="${C.deep}" stroke="${C.paper}" stroke-width="1.5" /><text x="${x}" y="${y + 4.5}" text-anchor="middle" fill="${C.paper}" font-size="11" font-weight="600" style="${SANS}">S</text>`;
-
-  const body = `
-    <!-- güç hattı -->
-    ${wire('M150 175 H200', C.gold, 3)}
-    ${wire('M290 175 H350', C.gold, 3)}
-    ${label(175, 165, '12 V', C.gold)}
-    ${box(30, 145, 120, 60, 'Batarya', '12 V NiMH', C.gold)}
-    ${box(200, 150, 90, 50, 'Şalter', 'ana güç', C.gold)}
-
-    <!-- hub'lar -->
-    ${box(350, 100, 210, 150, 'Control Hub', 'motor ×4 · servo ×6 · I2C · USB', C.gold, true)}
-    ${wire('M560 175 H620', C.sage, 2.4)}
-    ${label(590, 165, 'RS485', C.sage)}
-    ${box(620, 100, 170, 150, 'Expansion Hub', 'motor ×4 · servo ×6', C.sage)}
-
-    <!-- sensörler -->
-    ${wire('M420 100 V60', C.sky, 1.6)}
-    ${wire('M490 100 V60', C.sky, 1.6)}
-    ${label(455, 30, 'I2C · DİJİTAL · USB', C.sky)}
-    ${box(360, 44, 105, 34, 'IMU · mesafe', '', C.sky)}
-    ${box(475, 44, 105, 34, 'Kamera', '', C.sky)}
-
-    <!-- motorlar ve servolar -->
-    ${[380, 425, 470, 515].map((x) => wire(`M${x} 250 V282`, C.paper, 1.4)).join('')}
-    ${[380, 425, 470, 515].map((x) => m(x, 297)).join('')}
-    ${label(447, 330, 'DC MOTOR ×4 · ENKODERLİ', C.dim)}
-    ${[650, 690, 730, 770].map((x) => wire(`M${x} 250 V282`, C.paper, 1.4)).join('')}
-    ${[650, 690, 730, 770].map((x) => sv(x, 297)).join('')}
-    ${label(710, 330, 'SERVO ×6', C.dim)}
-
-    <!-- sürücü tarafı -->
-    ${wire('M790 140 C820 140 830 140 850 140', C.sky, 1.6, '4 5')}
-    <path d="M818 128 a14 14 0 0 1 0 24 M826 120 a24 24 0 0 1 0 40" fill="none" stroke="${C.sky}" stroke-width="1.6" stroke-linecap="round" />
-    ${label(822, 108, 'Wİ-Fİ', C.sky)}
-    ${box(850, 112, 90, 56, 'Driver Hub', 'sürücü', C.sky)}
-    ${wire('M895 168 V196', C.sky, 1.6)}
-    ${box(850, 196, 90, 40, 'Gamepad', '×2', C.sky)}
-  `;
-  return svg(960, 345, body, 'FTC kontrol sistemi şeması: batarya ve şalterden Control Hub ve Expansion Hub, oradan motorlar, servolar, sensörler; Wi-Fi ile Driver Hub');
-}
-
-// ---------------------------------------------------------------------------
 // Dişli çifti: 12 diş 24 dişi sürüyor. Oran 2:1, tork iki kat, hız yarı.
 // ---------------------------------------------------------------------------
 function gearPath(cx, cy, r, n, add, rot = 0) {
@@ -333,4 +279,4 @@ export function gears() {
 /** Sipariş çizelgesinde kalan haftayı x konumuna çevirir (viewBox birimi). */
 export const windowX = (remaining) => 70 + ((890 - 70) * (12 - Math.min(12, Math.max(0, remaining)))) / 12;
 
-export const ART = { robot, timeline, rings, wiring, gears, windows: () => timeline({ zones: true }) };
+export const ART = { robot, timeline, rings, gears, windows: () => timeline({ zones: true }) };

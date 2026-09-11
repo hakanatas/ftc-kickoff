@@ -3,7 +3,7 @@
 //   node serve.mjs            -> http://localhost:8080
 //   node serve.mjs 3000       -> http://localhost:3000
 import http from 'node:http';
-import { createReadStream, statSync } from 'node:fs';
+import { createReadStream, statSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -32,6 +32,18 @@ http
   .createServer((req, res) => {
     let urlPath = decodeURIComponent(new URL(req.url, 'http://x').pathname);
     if (urlPath.endsWith('/')) urlPath += 'index.html';
+    // assets/<klasör>/manifest.json: klasördeki dosya adları (yayında iş akışı üretir)
+    const mf = urlPath.match(/^\/assets\/(icons|photos)\/manifest\.json$/);
+    if (mf) {
+      let files = [];
+      try {
+        files = readdirSync(path.join(root, 'assets', mf[1])).filter((f) => !f.startsWith('.') && f !== 'README.md' && f !== 'manifest.json');
+      } catch {
+        /* klasör yoksa boş liste */
+      }
+      res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-cache' }).end(JSON.stringify(files));
+      return;
+    }
     const file = path.normalize(path.join(root, urlPath));
     if (!file.startsWith(root)) {
       res.writeHead(403).end();

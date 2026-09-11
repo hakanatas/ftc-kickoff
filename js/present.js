@@ -1,5 +1,6 @@
 import { LAYERS, RESOURCES, PATHS, KICKOFF, KICKOFF_WEEK, CHANGES } from './data.js';
 import { iconImg } from './icon.js';
+import { listAssets, pickAsset } from './assets.js';
 import { renderAwards } from './awards.js';
 import { SLIDES } from './slides.js';
 import { ART } from './art.js';
@@ -54,7 +55,7 @@ export function createDeck({ root, onOpen, onClose }) {
     const h = el('header', 'slide__head');
     if (s.kicker) h.appendChild(el('p', 'slide__kicker', s.kicker));
     if (s.title) h.appendChild(el('h2', 'slide__title', Array.isArray(s.title) ? s.title.join('<br />') : s.title));
-    if (s.lede) h.appendChild(el('p', 'slide__lede', s.lede));
+    if (s.lede) h.appendChild(el('p', 'slide__lede', s.lede.replace('{{n}}', String(RESOURCES.length))));
     return h;
   }
 
@@ -76,23 +77,41 @@ export function createDeck({ root, onOpen, onClose }) {
     img.decoding = 'async';
     if (spec.pos) img.style.objectPosition = spec.pos;
     if (spec.fit === 'contain') fig.classList.add('slide__photo--contain');
-    // Uzantı verilmişse (diagram.webp) doğrudan o dosya; yoksa sırayla dene.
-    const exts = /\.[a-z0-9]+$/i.test(spec.file) ? [''] : ['.jpg', '.png', '.webp'];
-    let k = 0;
-    const tryNext = () => {
-      if (k >= exts.length) {
-        fig.remove();
-        return;
-      }
-      img.src = `./assets/photos/${spec.file}${exts[k++]}`;
-    };
-    img.addEventListener('error', tryNext);
     img.addEventListener('load', () => {
       slide.classList.add('has-photo');
       refit();
     });
     fig.appendChild(img);
-    tryNext();
+    // Uzantı verilmişse (diagram.webp) doğrudan o dosya; yoksa manifest'ten
+    // seç, manifest yoksa uzantıları sırayla dene.
+    const named = /\.[a-z0-9]+$/i.test(spec.file);
+    const exts = ['jpg', 'png', 'webp'];
+    listAssets('photos').then((list) => {
+      if (named) {
+        if (list && !list.has(spec.file)) fig.remove();
+        else {
+          img.addEventListener('error', () => fig.remove());
+          img.src = `./assets/photos/${spec.file}`;
+        }
+        return;
+      }
+      if (list) {
+        const file = pickAsset(list, spec.file, exts);
+        if (file) img.src = `./assets/photos/${file}`;
+        else fig.remove();
+        return;
+      }
+      let k = 0;
+      const tryNext = () => {
+        if (k >= exts.length) {
+          fig.remove();
+          return;
+        }
+        img.src = `./assets/photos/${spec.file}.${exts[k++]}`;
+      };
+      img.addEventListener('error', tryNext);
+      tryNext();
+    });
     return fig;
   }
 
@@ -144,10 +163,10 @@ export function createDeck({ root, onOpen, onClose }) {
       const b = el('div', 'slide__cover slide__cover--closing');
       const p = photo(s.photo, b);
       if (p) b.appendChild(p);
-      b.innerHTML += `
-        <h1 class="slide__big slide__big--quote">${s.title.join('<br />')}</h1>
-        <p class="slide__lede">${s.lede}</p>
-        <p class="slide__foot">${s.foot}</p>`;
+      // innerHTML += kullanma: fotoğraf düğümü kopyalanır, yükleme bağı kopar
+      b.appendChild(el('h1', 'slide__big slide__big--quote', s.title.join('<br />')));
+      b.appendChild(el('p', 'slide__lede', s.lede));
+      b.appendChild(el('p', 'slide__foot', s.foot));
       return b;
     },
     facts(s) {
@@ -265,6 +284,9 @@ export function createDeck({ root, onOpen, onClose }) {
       const rel = (n) => (n === 0 ? 'bugün' : n === 1 ? 'yarın' : n === -1 ? 'dün' : n > 0 ? `${n} gün sonra` : `${-n} gün önce`);
       const kick = parse('2026-09-12');
       const dk = diff(kick);
+      // alt başlık güne göre: sunum gününde "bu akşam", sonrasında "yayında"
+      const ledeEl = b.querySelector('.slide__lede');
+      if (ledeEl) ledeEl.textContent = `Manual ön sürümü temmuzda çıktı; tam manual ${dk > 0 ? 'kickoff akşamı' : dk === 0 ? 'bu akşam' : 'yayında'}. Sonraki iki hafta yazılım ve kural takvimi.`;
       const wrap = el('div', 'dates');
       const hero = el('div', 'dates__hero fact');
       hero.innerHTML = dk === 0

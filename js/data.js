@@ -50,6 +50,7 @@ export const RESOURCES = [
   {
     name: 'Competition Manual',
     layer: 'resmi',
+    icon: 'first',
     roles: ['kural'],
     kind: 'sezonluk',
     star: true,
@@ -59,6 +60,7 @@ export const RESOURCES = [
   {
     name: 'FTC Q&A',
     layer: 'resmi',
+    icon: 'first',
     roles: ['kural'],
     kind: 'sezonluk',
     star: true,
@@ -68,6 +70,7 @@ export const RESOURCES = [
   {
     name: 'FTC Events',
     layer: 'resmi',
+    icon: 'first',
     roles: ['kural', 'odul'],
     kind: 'sezonluk',
     desc: 'Turnuva sonuçları, skorlar, sıralamalar. Scouting ve ittifak ortağı seçiminin başlangıç noktası.',
@@ -76,6 +79,7 @@ export const RESOURCES = [
   {
     name: 'BIOBUZZ Manual ön sürümü',
     layer: 'resmi',
+    icon: 'first',
     roles: ['kural', 'odul'],
     kind: 'sezonluk',
     desc: "Competition Manual'ın 29 Temmuz'da çıkan V0 sürümü ve değişiklik özeti: kuralın ruhu, evergreen kurallar, Initial Interview. Tam manual kickoff yayınından sonra.",
@@ -84,6 +88,7 @@ export const RESOURCES = [
   {
     name: 'Game Preview 2027',
     layer: 'resmi',
+    icon: 'first',
     roles: ['mekanik', 'yazilim'],
     kind: 'sezonluk',
     desc: "Pollen'in ölçüleri, dört üreticinin StarterBot'ları ve yedi Skill Builder mini oyunu. Oyun açıklanmadan önce intake denemeye başlamanın resmî yolu.",
@@ -92,6 +97,7 @@ export const RESOURCES = [
   {
     name: 'BIOBUZZ sezon tarihleri',
     layer: 'resmi',
+    icon: 'first',
     roles: ['kural'],
     kind: 'sezonluk',
     desc: 'Kickoff, SDK sürümü, Q&A açılışı, gönüllü eğitimi. Sezonun resmî takvimi tek sayfada.',
@@ -100,6 +106,7 @@ export const RESOURCES = [
   {
     name: 'FTC Docs',
     layer: 'resmi',
+    icon: 'first',
     roles: ['yazilim', 'elektronik', 'cad'],
     kind: 'kalici',
     star: true,
@@ -109,6 +116,7 @@ export const RESOURCES = [
   {
     name: 'FTC Docs · Control System',
     layer: 'resmi',
+    icon: 'first',
     roles: ['elektronik'],
     kind: 'kalici',
     desc: 'Control Hub ve Expansion Hub konfigürasyonu, bağlantı şeması, self-inspection adımları. Sezon başında bir kez okunması sorulacak sorunun yarısını siliyor.',
@@ -117,6 +125,7 @@ export const RESOURCES = [
   {
     name: 'FTC Docs · SDK',
     layer: 'resmi',
+    icon: 'first',
     roles: ['yazilim'],
     kind: 'sezonluk',
     desc: 'Robot Controller yazılımı, sürüm güncellemeleri, bilgisayar gereksinimleri. Sezon başında bir kez bakılır, sürüm uyuşmazlığı derdi biter.',
@@ -133,6 +142,7 @@ export const RESOURCES = [
   {
     name: 'FTC Docs · Vision',
     layer: 'resmi',
+    icon: 'first',
     roles: ['yazilim'],
     kind: 'kalici',
     desc: 'VisionPortal, AprilTag, kamera kalibrasyonu, renk işleme. Otonom performansının belirleyicisi artık burada.',
@@ -169,6 +179,7 @@ export const RESOURCES = [
   {
     name: 'Game Manual 0',
     layer: 'dokuman',
+    icon: 'gm0',
     roles: ['yazilim', 'mekanik', 'elektronik', 'tedarik'],
     kind: 'kalici',
     star: true,
@@ -178,6 +189,7 @@ export const RESOURCES = [
   {
     name: 'gm0 · Useful Resources',
     layer: 'dokuman',
+    icon: 'gm0',
     roles: ['kural', 'yazilim', 'mekanik'],
     kind: 'kalici',
     desc: 'Tüm ekosistemin küratörlü link listesi. Bu sayfanın uzun hâli diyebilirsiniz.',
@@ -186,6 +198,7 @@ export const RESOURCES = [
   {
     name: 'gm0 · Getting Started in FTC',
     layer: 'dokuman',
+    icon: 'gm0',
     roles: ['kural', 'odul'],
     kind: 'kalici',
     desc: 'Takım kurma, sezon akışı, roller. Bu haftanın ikinci ödevi tam olarak bu bölüm.',
@@ -194,6 +207,7 @@ export const RESOURCES = [
   {
     name: 'gm0 · Mechanical Design',
     layer: 'dokuman',
+    icon: 'gm0',
     roles: ['mekanik'],
     kind: 'kalici',
     desc: 'Şasi tipleri, güç aktarımı, mekanizmalar. Mekanik ekibin ana okuma listesi.',
@@ -202,6 +216,7 @@ export const RESOURCES = [
   {
     name: 'gm0 · Software Concepts',
     layer: 'dokuman',
+    icon: 'gm0',
     roles: ['yazilim'],
     kind: 'kalici',
     desc: 'Programlama kavramları ve yapılar; kütüphaneye geçmeden önce okunacak bölüm.',
@@ -210,6 +225,7 @@ export const RESOURCES = [
   {
     name: 'gm0 · Kit and Hardware Guide',
     layer: 'dokuman',
+    icon: 'gm0',
     roles: ['mekanik', 'tedarik'],
     kind: 'kalici',
     desc: 'Yapı sistemlerini ve motorları tarafsız karşılaştıran bölüm. Marka seçmeden önce okunacak yer.',
@@ -244,6 +260,7 @@ export const RESOURCES = [
   {
     name: 'REV · Introduction to Programming',
     layer: 'dokuman',
+    icon: 'rev',
     roles: ['yazilim'],
     kind: 'kalici',
     desc: "Üreticinin Hello Robot serisi: Control Hub üstünde Blocks ve OnBot Java ile ilk OpMode'dan kapalı çevrim kontrole.",
@@ -260,6 +277,7 @@ export const RESOURCES = [
   {
     name: 'FTCLib / SolversLib',
     layer: 'dokuman',
+    icon: 'solverslib',
     roles: ['yazilim'],
     kind: 'kalici',
     desc: "Komut tabanlı yapı ve donanım soyutlamaları. SolversLib, FTCLib'in aktif bakılan devamı: kütüphaneler yaşar ve ölür, seçmeden önce bakımına bakın.",
@@ -268,6 +286,7 @@ export const RESOURCES = [
   {
     name: 'Road Runner',
     layer: 'dokuman',
+    icon: 'roadrunner',
     roles: ['yazilim'],
     kind: 'kalici',
     desc: 'Otonom yol takibi. Matematiksel olarak sağlam, kurulumu emek ister.',
@@ -276,6 +295,7 @@ export const RESOURCES = [
   {
     name: 'Pedro Pathing',
     layer: 'dokuman',
+    icon: 'pedropathing',
     roles: ['yazilim'],
     kind: 'kalici',
     desc: 'Yol takibinde daha kolay ayarlanan, hızla yaygınlaşan alternatif.',
@@ -284,6 +304,7 @@ export const RESOURCES = [
   {
     name: 'NextFTC',
     layer: 'dokuman',
+    icon: 'nextftc',
     roles: ['yazilim'],
     kind: 'kalici',
     desc: 'Modern komut/OpMode çatısı. Pedro Pathing eklentisiyle geliyor.',
@@ -300,6 +321,7 @@ export const RESOURCES = [
   {
     name: 'FTC Dashboard · Panels',
     layer: 'dokuman',
+    icon: 'ftcdashboard',
     roles: ['yazilim'],
     kind: 'kalici',
     desc: 'Canlı telemetri ve ayar arayüzü. Hata ayıklamanın bel kemiği. Panels (panels.bylazar.com) aynı işi yapan yeni alternatif.',
@@ -379,6 +401,7 @@ export const RESOURCES = [
   {
     name: 'FTC Discord',
     layer: 'canli',
+    icon: 'discord',
     roles: ['yazilim', 'mekanik', 'kural'],
     kind: 'kalici',
     star: true,
@@ -388,6 +411,7 @@ export const RESOURCES = [
   {
     name: 'Chief Delphi',
     layer: 'canli',
+    icon: 'chiefdelphi',
     roles: ['yazilim', 'mekanik'],
     kind: 'kalici',
     desc: "FRC ve FTC'nin derin teknik tartışma arşivi. Aradığınız sorunun cevabı çoğu zaman zaten yazılmış.",
@@ -396,6 +420,7 @@ export const RESOURCES = [
   {
     name: 'Hivemind portfolyo arşivi',
     layer: 'canli',
+    icon: 'hivemind',
     roles: ['odul'],
     kind: 'kalici',
     star: true,
@@ -405,6 +430,7 @@ export const RESOURCES = [
   {
     name: 'FTC Scout',
     layer: 'canli',
+    icon: 'ftcscout',
     roles: ['odul', 'kural'],
     kind: 'sezonluk',
     desc: 'Takım ve maç istatistikleri. Turnuva öncesi ittifak stratejisi burada kurulur.',
@@ -413,6 +439,7 @@ export const RESOURCES = [
   {
     name: 'FIRST Tech Challenge · YouTube',
     layer: 'canli',
+    icon: 'first',
     roles: ['video', 'kural'],
     kind: 'sezonluk',
     desc: 'Resmî kanal: sezon tanıtımı, oyun animasyonu, kural açıklama videoları, şampiyona yayınları.',
@@ -421,6 +448,7 @@ export const RESOURCES = [
   {
     name: 'REV Robotics · YouTube',
     layer: 'canli',
+    icon: 'rev',
     roles: ['video', 'elektronik', 'yazilim'],
     kind: 'kalici',
     desc: 'Starter Bot yapım turu, Control Hub kurulumu, programlamaya giriş serisi.',
@@ -429,6 +457,7 @@ export const RESOURCES = [
   {
     name: 'goBILDA · YouTube',
     layer: 'canli',
+    icon: 'gobilda',
     roles: ['video', 'mekanik'],
     kind: 'kalici',
     desc: 'Yapı sistemi anlatımları ve Robot-in-3-Days serisi. Sezon başında hızlı prototip için.',
@@ -437,6 +466,7 @@ export const RESOURCES = [
   {
     name: '8644 Brainstormers · Tips & Tricks',
     layer: 'canli',
+    icon: 'brainstormers',
     roles: ['video', 'mekanik'],
     kind: 'kalici',
     desc: 'FTC mekaniğini en derli toplu anlatan takım serisi.',
@@ -445,6 +475,7 @@ export const RESOURCES = [
   {
     name: '9794 Wizards.exe',
     layer: 'canli',
+    icon: 'wizards',
     roles: ['video', 'mekanik'],
     kind: 'kalici',
     desc: 'Mekanizma tasarımı ve robot tanıtımları; ileri seviye yapım detayları.',
@@ -502,6 +533,7 @@ export const RESOURCES = [
   {
     name: 'goBILDA',
     layer: 'dokuman',
+    icon: 'gobilda',
     roles: ['tedarik', 'mekanik'],
     kind: 'kalici',
     desc: 'Kanal ve göbek sistemi, Yellow Jacket motorlar. Takımlara indirim programı var.',
@@ -510,6 +542,7 @@ export const RESOURCES = [
   {
     name: 'REV Robotics',
     layer: 'dokuman',
+    icon: 'rev',
     roles: ['tedarik', 'mekanik', 'elektronik'],
     kind: 'kalici',
     desc: "Ekstrüzyon tabanlı sistem. Control Hub'ın üreticisi olduğu için elektronikle bütünleşik.",
@@ -518,6 +551,7 @@ export const RESOURCES = [
   {
     name: 'TETRIX (Pitsco)',
     layer: 'dokuman',
+    icon: 'tetrix',
     roles: ['tedarik', 'mekanik'],
     kind: 'kalici',
     desc: "Pitsco'nun kiti, TorqueNADO motorlar. Okul laboratuvarlarında yaygın.",
@@ -526,6 +560,7 @@ export const RESOURCES = [
   {
     name: 'AndyMark',
     layer: 'dokuman',
+    icon: 'andymark',
     roles: ['tedarik', 'mekanik'],
     kind: 'kalici',
     desc: 'Robits yapı sistemi, NeveRest motorlar, mecanum ve compliant tekerlekler.',
@@ -534,6 +569,7 @@ export const RESOURCES = [
   {
     name: 'Studica',
     layer: 'dokuman',
+    icon: 'studica',
     roles: ['tedarik', 'mekanik'],
     kind: 'kalici',
     desc: 'Kendi yapı sistemi ve navX IMU sensörü.',
@@ -544,6 +580,7 @@ export const RESOURCES = [
   {
     name: 'NFR Products',
     layer: 'resmi',
+    icon: 'nfr',
     roles: ['tedarik'],
     kind: 'kalici',
     star: true,
@@ -554,6 +591,7 @@ export const RESOURCES = [
   {
     name: 'Robopiece',
     layer: 'resmi',
+    icon: 'robopiece',
     roles: ['tedarik'],
     kind: 'kalici',
     desc: "FTC Türkiye'nin listelediği tedarikçilerden; yarışma parçaları üzerine.",
@@ -563,6 +601,7 @@ export const RESOURCES = [
   {
     name: 'Wattos Otomasyon',
     layer: 'resmi',
+    icon: 'wattos',
     roles: ['tedarik'],
     kind: 'kalici',
     desc: 'Motor, batarya, tekerlek, şasi ve hareket bileşenleri; sezona özel ürün grubu.',

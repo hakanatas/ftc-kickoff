@@ -44,7 +44,7 @@ export const SLIDES = [
     kind: 'layers',
     kicker: 'Kaynak ekosistemi',
     title: 'Her kaynağın bir sahibi var',
-    lede: '60 link ezberlemeyin, üç katmanı öğrenin.',
+    lede: '{{n}} link ezberlemeyin, üç katmanı öğrenin.',
     note: 'Bu slayt sunumun omurgası. Sonraki her slaydı bir katmana yerleştireceğiz.',
   },
   {
